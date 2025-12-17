@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudios - Ingeniería Eléctrica | TecNM Pachuca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Saira:wght@300;500;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffea00;
+            --secondary: #ff3d00;
+            --accent: #00e5ff;
+            --purple-power: #9c27b0;
+            --bg-dark: #0a0a0a;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --grid: #2a2a2a;
+            --glow-yellow: rgba(255, 234, 0, 0.7);
+            --glow-red: rgba(255, 61, 0, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Saira', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Electric Circuit Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 234, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 61, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.05) 0%, transparent 60%);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(var(--grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        /* Lightning Effects Container */
+        .lightning-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .lightning {
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+            opacity: 0;
+            animation: lightning-strike 4s infinite;
+        }
+
+        @keyframes lightning-strike {
+            0%, 100% { opacity: 0; }
+            49% { opacity: 0; }
+            50% { opacity: 1; }
+            51% { opacity: 0; }
+            52% { opacity: 1; }
+            53% { opacity: 0; }
+        }
+
+        /* Electric Particles */
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            box-shadow: 0 0 10px var(--primary);
+            animation: particle-float linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Header - High Voltage Style */
+        .hero-header {
+            text-align: center;
+            padding: 5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '⚡';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 30rem;
+            transform: translate(-50%, -50%);
+            opacity: 0.03;
+            animation: electricPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes electricPulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.03;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 0.06;
+            }
+        }
+
+        .hero-title {
+            font-family: 'Audiowide', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 6rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            animation: titleCharge 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px var(--glow-yellow));
+            position: relative;
+        }
+
+        @keyframes titleCharge {
+            0%, 100% { 
+                filter: drop-shadow(0 0 30px var(--glow-yellow));
+            }
+            50% { 
+                filter: drop-shadow(0 0 50px var(--glow-yellow)) drop-shadow(0 0 60px var(--glow-red));
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Saira', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--accent);
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+            text-transform: uppercase;
+        }
+
+        .hero-code {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.2em;
+        }
+
+        .hero-code::before {
+            content: '⚡ ';
+            color: var(--primary);
+            animation: spark 1.5s infinite;
+        }
+
+        @keyframes spark {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Power Stats - Voltage Meters */
+        .power-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .voltage-meter {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(42, 42, 42, 0.8) 100%);
+            border: 3px solid var(--grid);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .voltage-meter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .voltage-meter:hover::before {
+            opacity: 0.15;
+        }
+
+        .voltage-meter:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 
+                0 20px 60px rgba(255, 234, 0, 0.4),
+                inset 0 0 30px rgba(255, 234, 0, 0.1);
+        }
+
+        .voltage-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 15px var(--primary));
+        }
+
+        .voltage-value {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 30px var(--glow-yellow);
+        }
+
+        .voltage-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+        }
+
+        /* Circuit Breaker Navigation */
+        .circuit-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.7) 100%);
+            border-radius: 20px;
+            border: 3px solid var(--grid);
+            position: relative;
+        }
+
+        .circuit-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 234, 0, 0.05) 20px,
+                rgba(255, 234, 0, 0.05) 40px
+            );
+        }
+
+        .breaker-btn {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(42, 42, 42, 0.9) 100%);
+            color: var(--text-primary);
+            border: 3px solid var(--grid);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .breaker-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .breaker-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .breaker-btn:hover {
+            border-color: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 
+                0 10px 30px rgba(255, 234, 0, 0.5),
+                inset 0 0 20px rgba(255, 234, 0, 0.2);
+        }
+
+        .breaker-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--bg-dark);
+            border-color: var(--primary);
+            box-shadow: 
+                0 0 40px var(--glow-yellow),
+                inset 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Curriculum Section */
+        .curriculum-section {
+            display: none;
+            animation: powerUp 0.6s ease-in;
+        }
+
+        .curriculum-section.active {
+            display: block;
+        }
+
+        @keyframes powerUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) scale(0.95);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .semester-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0 2rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--purple-power) 50%, var(--accent) 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .semester-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.05) 10px,
+                rgba(255, 255, 255, 0.05) 20px
+            );
+            animation: circuitFlow 10s linear infinite;
+        }
+
+        @keyframes circuitFlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .semester-header::after {
+            content: '⚡';
+            position: absolute;
+            right: 3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 5rem;
+            opacity: 0.15;
+        }
+
+        .semester-title {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 3rem;
+            color: var(--text-primary);
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+
+        .semester-credits {
+            font-family: 'Saira', sans-serif;
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.15em;
+            font-weight: 900;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Electric Course Cards */
+        .course-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(42, 42, 42, 0.95) 100%);
+            border: 3px solid var(--grid);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .course-card::after {
+            content: '⚡';
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            font-size: 3rem;
+            opacity: 0.05;
+            transition: all 0.4s ease;
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card:hover::after {
+            opacity: 0.15;
+            transform: rotate(-15deg) scale(1.2);
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 
+                0 25px 70px rgba(255, 234, 0, 0.3),
+                inset 0 0 40px rgba(255, 234, 0, 0.05);
+        }
+
+        .course-card.specialty {
+            border-color: var(--secondary);
+            background: linear-gradient(135deg, rgba(255, 61, 0, 0.15) 0%, rgba(156, 39, 176, 0.1) 100%);
+        }
+
+        .course-card.specialty::after {
+            content: '⚡⚡';
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .course-code {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            background: rgba(0, 229, 255, 0.15);
+            border-radius: 8px;
+            border: 2px solid rgba(0, 229, 255, 0.3);
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        .specialty-badge {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 0.7rem;
+            color: var(--secondary);
+            background: rgba(255, 61, 0, 0.2);
+            padding: 0.4rem 0.8rem;
+            border-radius: 8px;
+            border: 2px solid var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            animation: specialtyPulse 2s infinite;
+        }
+
+        @keyframes specialtyPulse {
+            0%, 100% { box-shadow: 0 0 10px var(--secondary); }
+            50% { box-shadow: 0 0 20px var(--secondary), 0 0 30px var(--secondary); }
+        }
+
+        .course-name {
+            font-family: 'Saira', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+            letter-spacing: 0.03em;
+            font-weight: 700;
+        }
+
+        .course-credits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--grid);
+        }
+
+        .credit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .credit-badge {
+            width: 55px;
+            height: 55px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            font-family: 'Audiowide', sans-serif;
+            border: 3px solid;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .credit-badge::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .credit-badge:hover::before {
+            opacity: 0.3;
+            animation: energyPulse 1s infinite;
+        }
+
+        @keyframes energyPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .credit-badge.theory {
+            background: linear-gradient(135deg, rgba(255, 234, 0, 0.25) 0%, rgba(255, 234, 0, 0.1) 100%);
+            color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(255, 234, 0, 0.4);
+        }
+
+        .credit-badge.practice {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.25) 0%, rgba(0, 229, 255, 0.1) 100%);
+            color: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.4);
+        }
+
+        .credit-badge.total {
+            background: linear-gradient(135deg, rgba(255, 61, 0, 0.25) 0%, rgba(255, 61, 0, 0.1) 100%);
+            color: var(--secondary);
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(255, 61, 0, 0.4);
+        }
+
+        .credit-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+        }
+
+        /* Prerequisites - Electric Connections */
+        .prerequisites {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--grid);
+        }
+
+        .prereq-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .prereq-label::before {
+            content: '⚡→ ';
+            color: var(--primary);
+        }
+
+        .prereq-code {
+            display: inline-block;
+            background: rgba(156, 39, 176, 0.2);
+            color: var(--purple-power);
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-family: 'Share Tech Mono', monospace;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 2px solid rgba(156, 39, 176, 0.4);
+            font-weight: 700;
+        }
+
+        /* Legend - Power Panel */
+        .power-legend {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(42, 42, 42, 0.85) 100%);
+            border: 3px solid var(--grid);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .power-legend::before {
+            content: '⚡';
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            font-size: 8rem;
+            opacity: 0.03;
+        }
+
+        .legend-title {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.1em;
+            font-weight: 900;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.8rem;
+            background: rgba(42, 42, 42, 0.6);
+            border-radius: 15px;
+            border: 2px solid var(--grid);
+            transition: all 0.3s ease;
+        }
+
+        .legend-item:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(255, 234, 0, 0.2);
+        }
+
+        .legend-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 2rem;
+            font-family: 'Audiowide', sans-serif;
+            border: 3px solid;
+            flex-shrink: 0;
+        }
+
+        .legend-icon.theory { 
+            background: rgba(255, 234, 0, 0.2); 
+            color: var(--primary); 
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(255, 234, 0, 0.4);
+        }
+        .legend-icon.practice { 
+            background: rgba(0, 229, 255, 0.2); 
+            color: var(--accent); 
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+        }
+        .legend-icon.total { 
+            background: rgba(255, 61, 0, 0.2); 
+            color: var(--secondary); 
+            border-color: var(--secondary);
+            box-shadow: 0 0 25px rgba(255, 61, 0, 0.4);
+        }
+
+        .legend-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* High Voltage Banner */
+        .voltage-banner {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--purple-power) 100%);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .voltage-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 30px,
+                rgba(255, 234, 0, 0.1) 30px,
+                rgba(255, 234, 0, 0.1) 60px
+            );
+            animation: warningStripes 10s linear infinite;
+        }
+
+        @keyframes warningStripes {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(60px, 60px); }
+        }
+
+        .voltage-banner::after {
+            content: '⚡⚡⚡';
+            position: absolute;
+            bottom: 2rem;
+            right: 3rem;
+            font-size: 4rem;
+            opacity: 0.2;
+        }
+
+        .banner-title {
+            font-family: 'Audiowide', sans-serif;
+            font-size: 3.5rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-subtitle {
+            font-family: 'Saira', sans-serif;
+            font-size: 1.7rem;
+            color: var(--text-primary);
+            opacity: 0.95;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .semester-title { font-size: 2rem; }
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            .circuit-nav {
+                gap: 0.5rem;
+                padding: 1.5rem;
+            }
+            .breaker-btn {
+                padding: 1rem 1.5rem;
+                font-size: 0.85rem;
+            }
+            .banner-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Lightning Container -->
+    <div class="lightning-container" id="lightningContainer"></div>
+
+    <!-- Particles Container -->
+    <div id="particlesContainer"></div>
+
+    <div class="container">
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <h1 class="hero-title">INGENIERÍA ELÉCTRICA</h1>
+            <p class="hero-subtitle">POTENCIA Y AUTOMATIZACIÓN</p>
+            <p class="hero-code">IELE-2010-209 / IELE-SEA-2021</p>
+        </header>
+
+        <!-- Power Stats -->
+        <div class="power-stats">
+            <div class="voltage-meter">
+                <div class="voltage-icon">⚡</div>
+                <span class="voltage-value">9</span>
+                <span class="voltage-label">Semestres</span>
+            </div>
+            <div class="voltage-meter">
+                <div class="voltage-icon">🔋</div>
+                <span class="voltage-value">260</span>
+                <span class="voltage-label">Créditos</span>
+            </div>
+            <div class="voltage-meter">
+                <div class="voltage-icon">⚙️</div>
+                <span class="voltage-value">209</span>
+                <span class="voltage-label">Genéricos</span>
+            </div>
+            <div class="voltage-meter">
+                <div class="voltage-icon">🎯</div>
+                <span class="voltage-value">26</span>
+                <span class="voltage-label">Especialidad</span>
+            </div>
+        </div>
+
+        <!-- Circuit Navigator -->
+        <nav class="circuit-nav" id="circuitNav"></nav>
+
+        <!-- Legend -->
+        <div class="power-legend">
+            <h3 class="legend-title">SISTEMA DE CRÉDITOS</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-icon theory">T</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--primary);">Horas Teoría</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Clases teóricas</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon practice">P</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--accent);">Horas Práctica</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Laboratorio y taller</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon total">C</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--secondary);">Créditos Totales</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Valor curricular</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Curriculum Sections -->
+        <div id="curriculumContainer"></div>
+
+        <!-- Voltage Banner -->
+        <div class="voltage-banner">
+            <h2 class="banner-title">ESPECIALIDAD</h2>
+            <p class="banner-subtitle">Sistemas Eléctricos de Potencia y Automatización Industrial</p>
+        </div>
+    </div>
+
+    <script>
+        // Create lightning effects
+        function createLightning() {
+            const container = document.getElementById('lightningContainer');
+            
+            for (let i = 0; i < 5; i++) {
+                const lightning = document.createElement('div');
+                lightning.className = 'lightning';
+                lightning.style.left = `${Math.random() * 100}%`;
+                lightning.style.animationDelay = `${Math.random() * 4}s`;
+                container.appendChild(lightning);
+            }
+        }
+
+        // Create electric particles
+        function createParticles() {
+            const container = document.getElementById('particlesContainer');
+            
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDuration = `${Math.random() * 3 + 3}s`;
+                container.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 6000);
+            }, 200);
+        }
+
+        createLightning();
+        createParticles();
+
+        const curriculumData = {
+            semesters: [
+                {
+                    number: 1,
+                    credits: 24,
+                    courses: [
+                        { code: "ACF-0901", name: "Cálculo Diferencial", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEC-1058", name: "Química", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "AEE-1051", name: "Probabilidad y Estadística", theory: 3, practice: 1, credits: 4, prereq: [] },
+                        { code: "ELO-1008", name: "Desarrollo Humano Integral", theory: 0, practice: 3, credits: 3, prereq: [] },
+                        { code: "ACA-0907", name: "Taller de Ética", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "ACC-0906", name: "Fundamentos de Investigación", theory: 2, practice: 2, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 2,
+                    credits: 24,
+                    courses: [
+                        { code: "ACF-0902", name: "Cálculo Integral", theory: 3, practice: 2, credits: 5, prereq: ["1V1"] },
+                        { code: "ACF-0903", name: "Álgebra Lineal", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ELQ-1025", name: "Tecnología de los Materiales", theory: 1, practice: 2, credits: 3, prereq: [] },
+                        { code: "AEF-1042", name: "Mecánica Clásica", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEA-1013", name: "Dibujo Asistido por Computadora", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "AEF-1020", name: "Electromagnetismo", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ELO-1004", name: "Comunicación Humana", theory: 0, practice: 3, credits: 3, prereq: [] }
+                    ]
+                },
+                {
+                    number: 3,
+                    credits: 31,
+                    courses: [
+                        { code: "ELF-1017", name: "Mecánica de Fluidos y Termodinámica", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ACF-0904", name: "Cálculo Vectorial", theory: 3, practice: 2, credits: 5, prereq: ["2V1"] },
+                        { code: "ELJ-1002", name: "Circuitos Eléctricos I", theory: 4, practice: 2, credits: 6, prereq: [] },
+                        { code: "ELD-1018", name: "Mediciones Eléctricas", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "ELC-1022", name: "Programación", theory: 2, practice: 2, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 4,
+                    credits: 27,
+                    courses: [
+                        { code: "ELR-1011", name: "Física Moderna", theory: 2, practice: 1, credits: 3, prereq: ["2V2"] },
+                        { code: "ACF-0905", name: "Ecuaciones Diferenciales", theory: 3, practice: 2, credits: 5, prereq: ["3V1"] },
+                        { code: "ELE-1026", name: "Teoría Electromagnética", theory: 3, practice: 1, credits: 4, prereq: ["2V3"] },
+                        { code: "AEF-1003", name: "Electrónica Analógica", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ELJ-1003", name: "Circuitos Eléctricos II", theory: 4, practice: 2, credits: 6, prereq: ["3V3"] },
+                        { code: "ELC-1019", name: "Métodos Numéricos", theory: 2, practice: 2, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 5,
+                    credits: 27,
+                    courses: [
+                        { code: "ELP-1010", name: "Equipos Mecánicos", theory: 3, practice: 1, credits: 4, prereq: ["2V2"] },
+                        { code: "AEF-1009", name: "Control I", theory: 3, practice: 2, credits: 5, prereq: ["4V1"] },
+                        { code: "AEC-1022", name: "Electrónica Digital", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "ELF-1027", name: "Transformadores", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ELC-1013", name: "Instalaciones Eléctricas", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "ACD-0908", name: "Desarrollo Sustentable", theory: 2, practice: 3, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 6,
+                    credits: 27,
+                    courses: [
+                        { code: "ELP-1015", name: "Legislación en Materia Eléctrica", theory: 3, practice: 0, credits: 3, prereq: ["2V2"] },
+                        { code: "AEF-1010", name: "Control II", theory: 3, practice: 2, credits: 5, prereq: ["5V1"] },
+                        { code: "ELF-1021", name: "Motores de Inducción y Especiales", theory: 3, practice: 2, credits: 5, prereq: ["5V4"] },
+                        { code: "ELF-1016", name: "Máquinas Síncronas y de C.D.", theory: 3, practice: 2, credits: 5, prereq: ["5V3"] },
+                        { code: "ELF-1014", name: "Instalaciones Eléctricas Industriales", theory: 3, practice: 2, credits: 5, prereq: ["5V5"] },
+                        { code: "ACA-0909", name: "Taller de Investigación I", theory: 0, practice: 4, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 7,
+                    credits: 27,
+                    courses: [
+                        { code: "ELE-1001", name: "Centrales Eléctricas", theory: 3, practice: 1, credits: 4, prereq: ["6V2"] },
+                        { code: "ELF-1005", name: "Control de Máquinas Eléctricas", theory: 3, practice: 2, credits: 5, prereq: ["7V1"] },
+                        { code: "ELD-1009", name: "Electrónica Industrial", theory: 2, practice: 3, credits: 5, prereq: ["6V4"] },
+                        { code: "ELF-1018", name: "Modelado de Sistemas Eléctricos de Potencia", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEF-1038", name: "Instrumentación", theory: 3, practice: 2, credits: 5, prereq: ["7V5"] },
+                        { code: "ACA-0910", name: "Taller de Investigación II", theory: 0, practice: 4, credits: 4, prereq: ["6V6"] }
+                    ]
+                },
+                {
+                    number: 8,
+                    credits: 27,
+                    courses: [
+                        { code: "SEF-2103", name: "Automatización Industrial", theory: 3, practice: 2, credits: 5, specialty: true, prereq: [] },
+                        { code: "SEC-2101", name: "Sistemas Embebidos Digitales", theory: 2, practice: 2, credits: 4, specialty: true, prereq: [] },
+                        { code: "ELC-1024", name: "Sistemas de Iluminación", theory: 2, practice: 2, credits: 4, prereq: ["8V5"] },
+                        { code: "ELQ-1012", name: "Gestión Empresarial y Liderazgo", theory: 1, practice: 2, credits: 3, prereq: ["8V2"] },
+                        { code: "ELF-1023", name: "Pruebas y Mantenimiento Eléctrico", theory: 3, practice: 2, credits: 5, prereq: ["8V4"] },
+                        { code: "ELF-1006", name: "Controlador Lógico Programable", theory: 3, practice: 2, credits: 5, prereq: ["8V3"] },
+                        { code: "ELC-1007", name: "Costos y Presupuesto de Proyectos Eléctricos", theory: 2, practice: 2, credits: 4, prereq: ["8V1"] }
+                    ]
+                },
+                {
+                    number: 9,
+                    credits: 21,
+                    courses: [
+                        { code: "SEM-2104", name: "Energía Eléctrica Alternativa", theory: 2, practice: 2, credits: 4, specialty: true, prereq: [] },
+                        { code: "SEI-2102", name: "Diseño y Operación de Subestaciones Eléctricas de Potencia", theory: 4, practice: 0, credits: 4, specialty: true, prereq: [] },
+                        { code: "SEL-2105", name: "Protección de Sistemas Eléctricos de Potencia", theory: 4, practice: 1, credits: 5, specialty: true, prereq: [] },
+                        { code: "SEI-2106", name: "Sistemas Eléctricos de Potencia", theory: 4, practice: 0, credits: 4, specialty: true, prereq: [] },
+                        { code: "", name: "Actividades Complementarias", theory: 0, practice: 0, credits: 5, prereq: [] },
+                        { code: "", name: "Servicio Social", theory: 0, practice: 0, credits: 10, prereq: [] },
+                        { code: "", name: "Residencia Profesional", theory: 0, practice: 0, credits: 10, prereq: [] }
+                    ]
+                }
+            ]
+        };
+
+        // Generate circuit navigator
+        const circuitNav = document.getElementById('circuitNav');
+        curriculumData.semesters.forEach((semester, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'breaker-btn' + (index === 0 ? ' active' : '');
+            btn.textContent = `SEM ${semester.number}`;
+            btn.onclick = () => showSemester(index);
+            circuitNav.appendChild(btn);
+        });
+
+        // Generate curriculum sections
+        const curriculumContainer = document.getElementById('curriculumContainer');
+        curriculumData.semesters.forEach((semester, index) => {
+            const section = document.createElement('div');
+            section.className = 'curriculum-section' + (index === 0 ? ' active' : '');
+            section.id = `semester-${index}`;
+
+            const header = document.createElement('div');
+            header.className = 'semester-header';
+            header.innerHTML = `
+                <h2 class="semester-title">SEMESTRE ${semester.number}</h2>
+                <div class="semester-credits">${semester.credits} CRÉDITOS</div>
+            `;
+
+            const grid = document.createElement('div');
+            grid.className = 'courses-grid';
+
+            semester.courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card' + (course.specialty ? ' specialty' : '');
+                
+                let prereqHTML = '';
+                if (course.prereq && course.prereq.length > 0) {
+                    prereqHTML = `
+                        <div class="prerequisites">
+                            <div class="prereq-label">Prerequisitos</div>
+                            ${course.prereq.map(p => `<span class="prereq-code">${p}</span>`).join('')}
+                        </div>
+                    `;
+                }
+
+                const specialtyBadge = course.specialty ? '<span class="specialty-badge">ESPECIALIDAD</span>' : '';
+
+                card.innerHTML = `
+                    <div class="course-header">
+                        <div class="course-code">${course.code || 'ESPECIAL'}</div>
+                        ${specialtyBadge}
+                    </div>
+                    <h3 class="course-name">${course.name}</h3>
+                    <div class="course-credits">
+                        <div class="credit-item">
+                            <div class="credit-badge theory">${course.theory}</div>
+                            <span class="credit-label">Teoría</span>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-badge practice">${course.practice}</div>
+                            <span class="credit-label">Práctica</span>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-badge total">${course.credits}</div>
+                            <span class="credit-label">Créditos</span>
+                        </div>
+                    </div>
+                    ${prereqHTML}
+                `;
+
+                grid.appendChild(card);
+            });
+
+            section.appendChild(header);
+            section.appendChild(grid);
+            curriculumContainer.appendChild(section);
+        });
+
+        function showSemester(index) {
+            document.querySelectorAll('.breaker-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+
+            document.querySelectorAll('.curriculum-section').forEach((section, i) => {
+                section.classList.toggle('active', i === index);
+            });
+
+            document.getElementById(`semester-${index}`).scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = `powerUp 0.6s ease-out ${index * 0.03}s both`;
+                    }, index * 20);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.course-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

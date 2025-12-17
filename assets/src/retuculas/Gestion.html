@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudios - Ingeniería en Gestión Empresarial | TecNM Pachuca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;900&family=Playfair+Display:wght@700;900&family=Roboto+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c9a961;
+            --secondary: #2c3e50;
+            --accent: #3498db;
+            --success: #27ae60;
+            --bg-dark: #1a1a2e;
+            --bg-card: #16213e;
+            --text-primary: #ffffff;
+            --text-secondary: #a8b2c2;
+            --grid: #2a3854;
+            --gold: #d4af37;
+            --silver: #c0c0c0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Corporate Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(201, 169, 97, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(52, 152, 219, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(39, 174, 96, 0.05) 0%, transparent 60%);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 50px, var(--grid) 50px, var(--grid) 51px),
+                repeating-linear-gradient(90deg, transparent, transparent 50px, var(--grid) 50px, var(--grid) 51px);
+            background-size: 50px 50px;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        /* Animated Chart Lines */
+        .charts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .chart-line {
+            position: absolute;
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            opacity: 0.2;
+            animation: chartMove linear infinite;
+        }
+
+        @keyframes chartMove {
+            0% {
+                transform: translateX(-100%) translateY(0);
+            }
+            100% {
+                transform: translateX(100vw) translateY(50px);
+            }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Executive Header */
+        .hero-header {
+            text-align: center;
+            padding: 5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '📊';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 25rem;
+            transform: translate(-50%, -50%);
+            opacity: 0.02;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gold) 50%, var(--silver) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            animation: fadeInGold 2s ease-out;
+            filter: drop-shadow(0 0 20px rgba(201, 169, 97, 0.3));
+        }
+
+        @keyframes fadeInGold {
+            from { 
+                opacity: 0; 
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--accent);
+            letter-spacing: 0.25em;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+            text-transform: uppercase;
+        }
+
+        .hero-code {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.2em;
+        }
+
+        .hero-code::before {
+            content: '💼 ';
+        }
+
+        /* Executive Dashboard Stats */
+        .executive-dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .kpi-card {
+            background: linear-gradient(135deg, rgba(22, 33, 62, 0.95) 0%, rgba(42, 56, 84, 0.9) 100%);
+            border: 2px solid var(--grid);
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .kpi-card:hover::before {
+            opacity: 0.12;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 
+                0 20px 60px rgba(201, 169, 97, 0.3),
+                inset 0 0 40px rgba(201, 169, 97, 0.08);
+        }
+
+        .kpi-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 0 15px rgba(201, 169, 97, 0.4));
+        }
+
+        .kpi-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .kpi-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+        }
+
+        /* Executive Navigation */
+        .executive-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(22, 33, 62, 0.9) 0%, rgba(42, 56, 84, 0.8) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--grid);
+            position: relative;
+        }
+
+        .executive-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 20px,
+                rgba(201, 169, 97, 0.03) 20px,
+                rgba(201, 169, 97, 0.03) 40px
+            );
+            border-radius: 20px;
+        }
+
+        .semester-btn {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 1.3rem 2rem;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(42, 56, 84, 0.95) 100%);
+            color: var(--text-primary);
+            border: 2px solid var(--grid);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .semester-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .semester-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .semester-btn:hover {
+            border-color: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(201, 169, 97, 0.4);
+        }
+
+        .semester-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gold) 100%);
+            color: var(--bg-dark);
+            border-color: var(--gold);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+            font-weight: 900;
+        }
+
+        /* Curriculum Section */
+        .curriculum-section {
+            display: none;
+            animation: businessFadeIn 0.6s ease-in;
+        }
+
+        .curriculum-section.active {
+            display: block;
+        }
+
+        @keyframes businessFadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(40px) scale(0.97);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .semester-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0 2rem 0;
+            padding: 3.5rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 50%, var(--success) 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .semester-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 30px,
+                rgba(255, 255, 255, 0.04) 30px,
+                rgba(255, 255, 255, 0.04) 60px
+            );
+        }
+
+        .semester-header::after {
+            content: '💼';
+            position: absolute;
+            right: 3.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 6rem;
+            opacity: 0.12;
+        }
+
+        .semester-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.2rem;
+            color: var(--text-primary);
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+
+        .semester-credits {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.9rem;
+            color: var(--text-primary);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.15em;
+            font-weight: 900;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Professional Course Cards */
+        .course-card {
+            background: linear-gradient(135deg, rgba(22, 33, 62, 0.98) 0%, rgba(42, 56, 84, 0.96) 100%);
+            border: 2px solid var(--grid);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--success));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .course-card::after {
+            content: '📈';
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            opacity: 0.05;
+            transition: all 0.4s ease;
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card:hover::after {
+            opacity: 0.15;
+            transform: rotate(15deg) scale(1.3);
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 
+                0 25px 70px rgba(201, 169, 97, 0.3),
+                inset 0 0 40px rgba(201, 169, 97, 0.06);
+        }
+
+        .course-card.specialty {
+            border-color: var(--success);
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.15) 0%, rgba(52, 152, 219, 0.1) 100%);
+        }
+
+        .course-card.specialty::after {
+            content: '⭐';
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+
+        .course-code {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            background: rgba(52, 152, 219, 0.15);
+            border-radius: 8px;
+            border: 2px solid rgba(52, 152, 219, 0.3);
+            letter-spacing: 0.1em;
+            font-weight: 700;
+        }
+
+        .specialty-badge {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: var(--success);
+            background: rgba(39, 174, 96, 0.2);
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            border: 2px solid var(--success);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 900;
+            animation: specialtyGlow 2s infinite;
+        }
+
+        @keyframes specialtyGlow {
+            0%, 100% { box-shadow: 0 0 10px var(--success); }
+            50% { box-shadow: 0 0 20px var(--success), 0 0 30px var(--success); }
+        }
+
+        .course-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            font-weight: 700;
+        }
+
+        .course-credits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--grid);
+        }
+
+        .credit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .credit-badge {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            border: 3px solid;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .credit-badge::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .credit-badge:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .credit-badge.theory {
+            background: linear-gradient(135deg, rgba(201, 169, 97, 0.25) 0%, rgba(201, 169, 97, 0.1) 100%);
+            color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(201, 169, 97, 0.4);
+        }
+
+        .credit-badge.practice {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.25) 0%, rgba(52, 152, 219, 0.1) 100%);
+            color: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.4);
+        }
+
+        .credit-badge.total {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.25) 0%, rgba(39, 174, 96, 0.1) 100%);
+            color: var(--success);
+            border-color: var(--success);
+            box-shadow: 0 0 20px rgba(39, 174, 96, 0.4);
+        }
+
+        .credit-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+        }
+
+        /* Prerequisites */
+        .prerequisites {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 2px solid var(--grid);
+        }
+
+        .prereq-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .prereq-label::before {
+            content: '→ ';
+            color: var(--primary);
+        }
+
+        .prereq-code {
+            display: inline-block;
+            background: rgba(44, 62, 80, 0.5);
+            color: var(--silver);
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-family: 'Roboto Mono', monospace;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 2px solid var(--grid);
+            font-weight: 700;
+        }
+
+        /* Executive Legend */
+        .executive-legend {
+            background: linear-gradient(135deg, rgba(22, 33, 62, 0.95) 0%, rgba(42, 56, 84, 0.9) 100%);
+            border: 3px solid var(--grid);
+            border-radius: 20px;
+            padding: 3.5rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .executive-legend::before {
+            content: '📊';
+            position: absolute;
+            top: 2.5rem;
+            right: 3.5rem;
+            font-size: 8rem;
+            opacity: 0.03;
+        }
+
+        .legend-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.3rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2.8rem;
+            letter-spacing: 0.08em;
+            font-weight: 900;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            padding: 2rem;
+            background: rgba(42, 56, 84, 0.6);
+            border-radius: 15px;
+            border: 2px solid var(--grid);
+            transition: all 0.3s ease;
+        }
+
+        .legend-item:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(201, 169, 97, 0.2);
+        }
+
+        .legend-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            border: 3px solid;
+            flex-shrink: 0;
+        }
+
+        .legend-icon.theory { 
+            background: rgba(201, 169, 97, 0.2); 
+            color: var(--primary); 
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(201, 169, 97, 0.4);
+        }
+        .legend-icon.practice { 
+            background: rgba(52, 152, 219, 0.2); 
+            color: var(--accent); 
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(52, 152, 219, 0.4);
+        }
+        .legend-icon.total { 
+            background: rgba(39, 174, 96, 0.2); 
+            color: var(--success); 
+            border-color: var(--success);
+            box-shadow: 0 0 25px rgba(39, 174, 96, 0.4);
+        }
+
+        .legend-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            font-weight: 600;
+        }
+
+        /* Corporate Banner */
+        .corporate-banner {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+            border-radius: 20px;
+            padding: 4.5rem;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .corporate-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 40px,
+                rgba(201, 169, 97, 0.08) 40px,
+                rgba(201, 169, 97, 0.08) 80px
+            );
+            animation: corporatePattern 15s linear infinite;
+        }
+
+        @keyframes corporatePattern {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(80px, 80px); }
+        }
+
+        .corporate-banner::after {
+            content: '💼📊📈';
+            position: absolute;
+            bottom: 2rem;
+            right: 3rem;
+            font-size: 3rem;
+            opacity: 0.15;
+        }
+
+        .banner-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.8rem;
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.12em;
+            text-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.7rem;
+            color: var(--text-primary);
+            opacity: 0.95;
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .semester-title { font-size: 2rem; }
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            .executive-nav {
+                gap: 0.5rem;
+                padding: 1.8rem;
+            }
+            .semester-btn {
+                padding: 1rem 1.5rem;
+                font-size: 0.85rem;
+            }
+            .banner-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Charts Container -->
+    <div class="charts-container" id="chartsContainer"></div>
+
+    <div class="container">
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <h1 class="hero-title">Gestión Empresarial</h1>
+            <p class="hero-subtitle">Calidad y Sustentabilidad en los Negocios</p>
+            <p class="hero-code">IGEM-2009-201 / IGEE-CSN-2016-01</p>
+        </header>
+
+        <!-- Executive Dashboard -->
+        <div class="executive-dashboard">
+            <div class="kpi-card">
+                <div class="kpi-icon">📊</div>
+                <span class="kpi-value">9</span>
+                <span class="kpi-label">Semestres</span>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">💼</div>
+                <span class="kpi-value">260</span>
+                <span class="kpi-label">Créditos</span>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📈</div>
+                <span class="kpi-value">205</span>
+                <span class="kpi-label">Genéricos</span>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">⭐</div>
+                <span class="kpi-value">30</span>
+                <span class="kpi-label">Especialidad</span>
+            </div>
+        </div>
+
+        <!-- Executive Navigator -->
+        <nav class="executive-nav" id="executiveNav"></nav>
+
+        <!-- Legend -->
+        <div class="executive-legend">
+            <h3 class="legend-title">Sistema de Créditos Académicos</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-icon theory">T</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--primary);">Horas Teoría</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Clases magistrales</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon practice">P</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--accent);">Horas Práctica</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Talleres y laboratorio</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon total">C</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--success);">Créditos Totales</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Valor curricular</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Curriculum Sections -->
+        <div id="curriculumContainer"></div>
+
+        <!-- Corporate Banner -->
+        <div class="corporate-banner">
+            <h2 class="banner-title">ESPECIALIDAD</h2>
+            <p class="banner-subtitle">Calidad y Sustentabilidad en los Negocios</p>
+        </div>
+    </div>
+
+    <script>
+        // Create animated chart lines
+        function createChartLines() {
+            const container = document.getElementById('chartsContainer');
+            
+            for (let i = 0; i < 8; i++) {
+                const line = document.createElement('div');
+                line.className = 'chart-line';
+                line.style.top = `${Math.random() * 100}%`;
+                line.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                line.style.animationDelay = `${Math.random() * 5}s`;
+                container.appendChild(line);
+            }
+        }
+
+        createChartLines();
+
+        const curriculumData = {
+            semesters: [
+                {
+                    number: 1,
+                    credits: 27,
+                    courses: [
+                        { code: "GEF-0909", name: "Fundamentos de Investigación", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "ACF-0901", name: "Cálculo Diferencial", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "GEC-0906", name: "Desarrollo Humano", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "GEC-0914", name: "Fundamentos de Gestión Empresarial", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "GEC-0913", name: "Fundamentos de Física", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "GEF-0914", name: "Fundamentos de Química", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 2,
+                    credits: 27,
+                    courses: [
+                        { code: "AEB-1052", name: "Software de Aplicación Ejecutivo", theory: 1, practice: 4, credits: 5, prereq: [] },
+                        { code: "ACF-0902", name: "Cálculo Integral", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "GED-0904", name: "Contabilidad Orientada a los Negocios", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "AEC-1014", name: "Dinámica Social", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "ACA-0907", name: "Taller de Ética", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "GEE-0925", name: "Legislación Laboral", theory: 3, practice: 1, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 3,
+                    credits: 28,
+                    courses: [
+                        { code: "AEC-1078", name: "Marco Legal de las Organizaciones", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "AEF-1052", name: "Probabilidad y Estadística Descriptiva", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "GED-0905", name: "Costos Empresariales", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "GEC-0918", name: "Habilidades Directivas I", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "AEF-1071", name: "Economía Empresarial", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ACF-0903", name: "Álgebra Lineal", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 4,
+                    credits: 30,
+                    courses: [
+                        { code: "GEF-0922", name: "Ingeniería Económica", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "GEG-0910", name: "Estadística Inferencial I", theory: 3, practice: 3, credits: 6, prereq: [] },
+                        { code: "GED-0903", name: "Instrumentos de Presupuestación Empresarial", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "GEC-0920", name: "Habilidades Directivas II", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "GEF-0909", name: "Entorno Macroeconómico", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEF-1076", name: "Investigación de Operaciones", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 5,
+                    credits: 31,
+                    courses: [
+                        { code: "AEF-1073", name: "Finanzas en las Organizaciones", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "GEG-0911", name: "Estadística Inferencial II", theory: 3, practice: 3, credits: 6, prereq: [] },
+                        { code: "GEF-0921", name: "Ingeniería de Procesos", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "SCA-1025", name: "Taller de Bases de Datos", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "ACA-0909", name: "Taller de Investigación I", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "GEF-0927", name: "Mercadotecnia", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 6,
+                    credits: 28,
+                    courses: [
+                        { code: "GEF-0901", name: "Administración de la Salud y Seguridad", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "GEG-0911", name: "El Emprendedor y la Innovación", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "GEC-0916", name: "Gestión de la Producción I", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "GEO-0930", name: "Sistemas de Información de la Mercadotecnia", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "ACA-0910", name: "Taller de Investigación II", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "GEF-0908", name: "Gestión del Capital Humano", theory: 3, practice: 3, credits: 6, prereq: [] }
+                    ]
+                },
+                {
+                    number: 7,
+                    credits: 29,
+                    courses: [
+                        { code: "AED-1069", name: "Calidad Aplicada a la Gestión Empresarial", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "GED-0906", name: "Plan de Negocios", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "GEC-0917", name: "Gestión de la Producción II", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "GEC-1035", name: "Gestión Estratégica", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "ACD-0908", name: "Desarrollo Sustentable", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "AEB-1043", name: "Mercadotecnia Electrónica", theory: 1, practice: 3, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 8,
+                    credits: 33,
+                    courses: [
+                        { code: "", name: "Servicio Social", theory: 0, practice: 0, credits: 10, prereq: [] },
+                        { code: "CSJ-1601", name: "Calidad en la Gestión", theory: 4, practice: 2, credits: 6, specialty: true, prereq: [] },
+                        { code: "GEF-0902", name: "Cadena de Suministros", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "CSJ-1603", name: "Simulación de Negocios", theory: 4, practice: 2, credits: 6, prereq: [] },
+                        { code: "CSJ-1602", name: "Negocios y Sustentabilidad", theory: 4, practice: 2, credits: 6, specialty: true, prereq: [] }
+                    ]
+                },
+                {
+                    number: 9,
+                    credits: 27,
+                    courses: [
+                        { code: "CSM-1604", name: "Seminario de Gestión Financiera", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "CEJ-1605", name: "Formulación y Evaluación de Proyectos de Inversión", theory: 4, practice: 2, credits: 6, prereq: [] },
+                        { code: "", name: "Residencia Profesional", theory: 0, practice: 0, credits: 10, prereq: [] },
+                        { code: "", name: "Actividad Complementaria", theory: 0, practice: 0, credits: 5, prereq: [] }
+                    ]
+                }
+            ]
+        };
+
+        // Generate executive navigator
+        const executiveNav = document.getElementById('executiveNav');
+        curriculumData.semesters.forEach((semester, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'semester-btn' + (index === 0 ? ' active' : '');
+            btn.textContent = `Semestre ${semester.number}`;
+            btn.onclick = () => showSemester(index);
+            executiveNav.appendChild(btn);
+        });
+
+        // Generate curriculum sections
+        const curriculumContainer = document.getElementById('curriculumContainer');
+        curriculumData.semesters.forEach((semester, index) => {
+            const section = document.createElement('div');
+            section.className = 'curriculum-section' + (index === 0 ? ' active' : '');
+            section.id = `semester-${index}`;
+
+            const header = document.createElement('div');
+            header.className = 'semester-header';
+            header.innerHTML = `
+                <h2 class="semester-title">SEMESTRE ${semester.number}</h2>
+                <div class="semester-credits">${semester.credits} CRÉDITOS</div>
+            `;
+
+            const grid = document.createElement('div');
+            grid.className = 'courses-grid';
+
+            semester.courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card' + (course.specialty ? ' specialty' : '');
+                
+                let prereqHTML = '';
+                if (course.prereq && course.prereq.length > 0) {
+                    prereqHTML = `
+                        <div class="prerequisites">
+                            <div class="prereq-label">Prerequisitos</div>
+                            ${course.prereq.map(p => `<span class="prereq-code">${p}</span>`).join('')}
+                        </div>
+                    `;
+                }
+
+                const specialtyBadge = course.specialty ? '<span class="specialty-badge">ESPECIALIDAD</span>' : '';
+
+                card.innerHTML = `
+                    <div class="course-header">
+                        <div class="course-code">${course.code || 'ESPECIAL'}</div>
+                        ${specialtyBadge}
+                    </div>
+                    <h3 class="course-name">${course.name}</h3>
+                    <div class="course-credits">
+                        <div class="credit-item">
+                            <div class="credit-badge theory">${course.theory}</div>
+                            <span class="credit-label">Teoría</span>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-badge practice">${course.practice}</div>
+                            <span class="credit-label">Práctica</span>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-badge total">${course.credits}</div>
+                            <span class="credit-label">Créditos</span>
+                        </div>
+                    </div>
+                    ${prereqHTML}
+                `;
+
+                grid.appendChild(card);
+            });
+
+            section.appendChild(header);
+            section.appendChild(grid);
+            curriculumContainer.appendChild(section);
+        });
+
+        function showSemester(index) {
+            document.querySelectorAll('.semester-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+
+            document.querySelectorAll('.curriculum-section').forEach((section, i) => {
+                section.classList.toggle('active', i === index);
+            });
+
+            document.getElementById(`semester-${index}`).scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = `businessFadeIn 0.6s ease-out ${index * 0.04}s both`;
+                    }, index * 25);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.course-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

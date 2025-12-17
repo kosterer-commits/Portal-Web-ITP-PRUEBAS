@@ -1,0 +1,791 @@
+/* ============================================
+   CARRUSEL V2 - UN SOLO CONTENEDOR HORIZONTAL
+   Info + Controles en la misma área
+   ============================================ */
+
+/* Reset y base */
+.carousel-v2-section {
+    width: 100%;
+    background: var(--bg-white);
+    padding: 0;
+    margin: 0;
+}
+
+/* Alias para compatibilidad con código existente */
+.modern-carousel {
+    width: 100%;
+    position: relative;
+    background: linear-gradient(to bottom, #f9f9f9, rgb(167, 210, 247));
+    padding: 2rem 0;
+    overflow: hidden;
+}
+
+/* Logos decorativos de fondo */
+.reloj-pach {
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 500px;
+    z-index: 1;
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+.logo-TECNM-solo {
+    position: absolute;
+    left: -45px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 400px;
+    z-index: 1;
+    opacity: 0.04;
+    pointer-events: none;
+}
+
+.carousel-v2-wrapper {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* ============================================
+   CONTENEDOR PRINCIPAL
+   ============================================ */
+
+.carousel-v2-main {
+    position: relative;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    background: white;
+}
+
+/* ============================================
+   ÁREA DEL BANNER (FULL WIDTH)
+   ============================================ */
+
+.carousel-v2-banner-area {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    background: #1a1a1a;
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.carousel-v2-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-v2-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+.carousel-v2-slide.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+.carousel-v2-banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    animation: bannerZoom 0.8s ease-out;
+}
+
+.carousel-v2-slide.active .carousel-v2-banner-img {
+    animation: bannerZoom 8s ease-out infinite;
+}
+
+@keyframes bannerZoom {
+    from {
+        transform: scale(1.05);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* ============================================
+   CONTENEDOR ÚNICO - INFO + CONTROLES
+   ============================================ */
+
+.carousel-v2-bottom-section {
+    width: 100%;
+    background: linear-gradient(135deg, #0f0f1e, #1a1a2e);
+    position: relative;
+    /* Ya no es flex, solo un contenedor */
+}
+
+/* ============================================
+   ÁREA ÚNICA - INFO A LA IZQUIERDA, CONTROLES A LA DERECHA
+   ============================================ */
+
+.carousel-v2-info-area {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 4rem;
+    gap: 4rem;
+    min-height: 220px;
+    position: relative;
+}
+
+/* Contenedor de información (izquierda) */
+.carousel-v2-info-wrapper {
+    flex: 1;
+    max-width: 60%;
+    position: relative;
+}
+
+.carousel-v2-info {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    pointer-events: none;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.carousel-v2-info.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.carousel-v2-info-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 100%;
+}
+
+/* Tag */
+.carousel-v2-tag {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: linear-gradient(135deg, #0052cc, #00d4ff);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 50px;
+    width: fit-content;
+    box-shadow: 0 4px 15px rgba(0, 82, 204, 0.4);
+}
+
+/* Título */
+.carousel-v2-title {
+    font-size: 2.25rem;
+    font-weight: 900;
+    line-height: 1.2;
+    color: #ffffff;
+    margin: 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Descripción */
+.carousel-v2-description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #e9ecef;
+    margin: 0;
+    max-width: 100%;
+}
+
+/* Botón */
+.carousel-v2-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.9rem 1.8rem;
+    background: linear-gradient(135deg, #0052cc, #00d4ff);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    width: fit-content;
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+    position: relative;
+    overflow: hidden;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+.carousel-v2-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transition: left 0.6s ease;
+}
+
+.carousel-v2-btn:hover::before {
+    left: 100%;
+}
+
+.carousel-v2-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 82, 204, 0.4);
+}
+
+.carousel-v2-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.carousel-v2-btn:hover svg {
+    transform: translateX(5px);
+}
+
+/* ============================================
+   CONTROLES (DERECHA DEL MISMO CONTENEDOR)
+   ============================================ */
+
+.carousel-v2-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* Flechas */
+.carousel-v2-arrow {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(0, 82, 204, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+}
+
+.carousel-v2-arrow:hover {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: linear-gradient(135deg, #0052cc, #00d4ff);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(0, 82, 204, 0.4);
+}
+
+.carousel-v2-arrow:active {
+    transform: scale(0.95);
+}
+
+/* Indicadores (dots) */
+.carousel-v2-indicators {
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+    align-items: center;
+    justify-content: center;
+    flex: 0 1 auto;
+}
+
+.carousel-v2-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    position: relative;
+    backdrop-filter: blur(5px);
+    flex-shrink: 0;
+}
+
+.carousel-v2-dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: transparent;
+    transition: background 0.3s ease;
+}
+
+.carousel-v2-dot:hover {
+    background: rgba(0, 212, 255, 0.4);
+    border-color: rgba(0, 212, 255, 0.8);
+}
+
+.carousel-v2-dot.active {
+    width: 28px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #00d4ff, #0052cc);
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+/* Botón de catálogo */
+.carousel-v2-catalog-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.7rem 1.4rem;
+    background: rgba(0, 82, 204, 0.85);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.carousel-v2-catalog-btn:hover {
+    background: linear-gradient(135deg, #0052cc, #00d4ff);
+    border-color: rgba(255, 255, 255, 0.8);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 82, 204, 0.4);
+}
+
+.carousel-v2-catalog-btn svg {
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.carousel-v2-catalog-btn:hover svg {
+    transform: rotate(90deg);
+}
+
+/* ============================================
+   MODAL DEL CATÁLOGO
+   ============================================ */
+
+.carousel-v2-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-v2-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.carousel-v2-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+.carousel-v2-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 1400px;
+    max-height: 85vh;
+    background: white;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    animation: modalSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes modalSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Header del modal */
+.carousel-v2-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2.5rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.carousel-v2-modal-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #212529;
+    margin: 0;
+}
+
+.carousel-v2-modal-close {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #f8f9fa;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.carousel-v2-modal-close:hover {
+    background: #1e3c72;
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* Grid de thumbnails */
+.carousel-v2-modal-grid {
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    overflow-y: auto;
+    max-height: calc(85vh - 120px);
+}
+
+/* Thumbnail */
+.carousel-v2-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.carousel-v2-thumb:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-v2-thumb.active {
+    box-shadow: 0 0 0 4px #00d4ff;
+}
+
+.carousel-v2-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.carousel-v2-thumb:hover img {
+    transform: scale(1.08);
+}
+
+.carousel-v2-thumb-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.5), transparent);
+    padding: 2rem 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transform: translateY(30%);
+    transition: transform 0.4s ease;
+}
+
+.carousel-v2-thumb:hover .carousel-v2-thumb-overlay {
+    transform: translateY(0);
+}
+
+.carousel-v2-thumb-title {
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.3;
+}
+
+.carousel-v2-thumb-tag {
+    color: #00d4ff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1400px) {
+    .carousel-v2-info-area {
+        padding: 3rem 3rem;
+        gap: 3rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    .carousel-v2-banner-area {
+        height: 450px;
+    }
+    
+    .carousel-v2-info-area {
+        padding: 2.5rem 2.5rem;
+        gap: 2.5rem;
+    }
+    
+    .carousel-v2-title {
+        font-size: 2rem;
+    }
+    
+    .carousel-v2-description {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .carousel-v2-banner-area {
+        height: 400px;
+    }
+    
+    .carousel-v2-info-area {
+        padding: 2rem 2rem;
+        gap: 2rem;
+    }
+    
+    .carousel-v2-info-wrapper {
+        max-width: 55%;
+    }
+    
+    .carousel-v2-title {
+        font-size: 1.75rem;
+    }
+    
+    .carousel-v2-description {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-v2-tag {
+        padding: 0.5rem 1rem;
+        font-size: 0.7rem;
+    }
+    
+    .carousel-v2-controls {
+        gap: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-v2-banner-area {
+        height: 350px;
+    }
+    
+    /* Logos decorativos en móvil */
+    .reloj-pach {
+        height: 80px;
+        right: 10px;
+    }
+    
+    .logo-TECNM-solo {
+        height: 80px;
+        left: 10px;
+    }
+    
+    /* CRÍTICO: Cambiar a columna */
+    .carousel-v2-info-area {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+    }
+    
+    .carousel-v2-info-wrapper {
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .carousel-v2-controls {
+        width: 100%;
+        justify-content: center;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    
+    .carousel-v2-title {
+        font-size: 1.6rem;
+    }
+    
+    .carousel-v2-description {
+        font-size: 0.9rem;
+    }
+    
+    .carousel-v2-arrow {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .carousel-v2-dot {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .carousel-v2-dot.active {
+        width: 24px;
+    }
+    
+    .carousel-v2-catalog-btn {
+        padding: 0.65rem 1.2rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-v2-banner-area {
+        height: 300px;
+    }
+    
+    .carousel-v2-info-area {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .carousel-v2-title {
+        font-size: 1.4rem;
+    }
+    
+    .carousel-v2-description {
+        font-size: 0.85rem;
+    }
+    
+    .carousel-v2-btn {
+        padding: 0.75rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    .carousel-v2-controls {
+        gap: 1rem;
+    }
+    
+    .carousel-v2-arrow {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-v2-dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .carousel-v2-dot.active {
+        width: 22px;
+    }
+    
+    .carousel-v2-catalog-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.75rem;
+    }
+    
+    .carousel-v2-tag {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.9rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .carousel-v2-banner-area {
+        height: 280px;
+    }
+    
+    .carousel-v2-title {
+        font-size: 1.2rem;
+    }
+    
+    .carousel-v2-description {
+        font-size: 0.8rem;
+    }
+    
+    .carousel-v2-arrow {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* ============================================
+   ACCESIBILIDAD
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-v2-slide,
+    .carousel-v2-info,
+    .carousel-v2-arrow,
+    .carousel-v2-dot,
+    .carousel-v2-btn,
+    .carousel-v2-thumb,
+    .carousel-v2-banner-img {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* Focus visible */
+.carousel-v2-arrow:focus-visible,
+.carousel-v2-dot:focus-visible,
+.carousel-v2-btn:focus-visible,
+.carousel-v2-catalog-btn:focus-visible,
+.carousel-v2-modal-close:focus-visible,
+.carousel-v2-thumb:focus-visible {
+    outline: 3px solid #00d4ff;
+    outline-offset: 3px;
+}

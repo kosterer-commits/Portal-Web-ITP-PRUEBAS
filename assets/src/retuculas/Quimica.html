@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudios - Ingeniería Química | TecNM Pachuca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500;700;900&family=Orbitron:wght@400;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ffaa;
+            --secondary: #ff6b9d;
+            --accent: #ffd700;
+            --blue-science: #00b4d8;
+            --purple-lab: #7b2cbf;
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --grid: #21262d;
+            --glow-green: rgba(0, 255, 170, 0.6);
+            --glow-pink: rgba(255, 107, 157, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Molecular Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 30%, rgba(0, 255, 170, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 70%, rgba(255, 107, 157, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(0, 180, 216, 0.06) 0%, transparent 60%);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 2px, var(--grid) 2px, var(--grid) 3px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, var(--grid) 2px, var(--grid) 3px);
+            background-size: 60px 60px;
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        /* Floating Molecules Animation */
+        .molecules-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .molecule {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.15;
+            animation: float linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.15;
+            }
+            90% {
+                opacity: 0.15;
+            }
+            100% {
+                transform: translate(100px, -100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Header - Laboratory Style */
+        .hero-header {
+            text-align: center;
+            padding: 5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.12;
+            transform: translate(-50%, -50%);
+            animation: chemicalReaction 4s ease-in-out infinite;
+        }
+
+        @keyframes chemicalReaction {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.12;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.4);
+                opacity: 0.2;
+            }
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 5.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--blue-science) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 1rem;
+            animation: titleGlow 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px var(--glow-green));
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 20px var(--glow-green));
+            }
+            50% { 
+                filter: drop-shadow(0 0 35px var(--glow-green)) drop-shadow(0 0 45px var(--glow-pink));
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Exo 2', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--blue-science);
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            text-shadow: 0 0 15px rgba(0, 180, 216, 0.5);
+        }
+
+        .hero-code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.2em;
+        }
+
+        .hero-code::before {
+            content: '⚗️ ';
+        }
+
+        /* Periodic Table Style Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-element {
+            background: linear-gradient(135deg, rgba(22, 27, 34, 0.95) 0%, rgba(33, 38, 45, 0.8) 100%);
+            border: 2px solid var(--grid);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .stat-element::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .stat-element:hover::before {
+            opacity: 0.1;
+        }
+
+        .stat-element:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 255, 170, 0.3);
+        }
+
+        .stat-symbol {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 20px var(--glow-green);
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: var(--secondary);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        /* Beaker Navigation */
+        .semester-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(22, 27, 34, 0.8) 0%, rgba(33, 38, 45, 0.6) 100%);
+            border-radius: 20px;
+            border: 2px solid var(--grid);
+            position: relative;
+        }
+
+        .semester-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 255, 170, 0.03) 10px,
+                rgba(0, 255, 170, 0.03) 20px
+            );
+            border-radius: 20px;
+        }
+
+        .semester-btn {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 1.2rem 1.8rem;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(33, 38, 45, 0.9) 100%);
+            color: var(--text-primary);
+            border: 2px solid var(--grid);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.05em;
+        }
+
+        .semester-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            border-radius: 50%;
+        }
+
+        .semester-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .semester-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 255, 170, 0.3);
+        }
+
+        .semester-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--blue-science) 100%);
+            color: var(--bg-dark);
+            border-color: var(--primary);
+            box-shadow: 0 0 30px var(--glow-green);
+        }
+
+        /* Curriculum Section */
+        .curriculum-section {
+            display: none;
+            animation: reactionFade 0.6s ease-in;
+        }
+
+        .curriculum-section.active {
+            display: block;
+        }
+
+        @keyframes reactionFade {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.98);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .semester-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0 2rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--purple-lab) 0%, var(--blue-science) 50%, var(--primary) 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .semester-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.05) 20px,
+                rgba(255, 255, 255, 0.05) 40px
+            );
+        }
+
+        .semester-header::after {
+            content: '⚗️';
+            position: absolute;
+            right: 3rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 4rem;
+            opacity: 0.2;
+        }
+
+        .semester-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.8rem;
+            color: var(--text-primary);
+            letter-spacing: 0.08em;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.4);
+            font-weight: 900;
+        }
+
+        .semester-credits {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            background: rgba(0, 0, 0, 0.4);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Test Tube Course Cards */
+        .course-card {
+            background: linear-gradient(135deg, rgba(22, 27, 34, 0.98) 0%, rgba(33, 38, 45, 0.95) 100%);
+            border: 2px solid var(--grid);
+            border-radius: 15px;
+            padding: 1.8rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--blue-science), var(--secondary));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .course-card::after {
+            content: '⚛️';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.1;
+            transition: all 0.4s ease;
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card:hover::after {
+            opacity: 0.3;
+            transform: rotate(180deg);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(0, 255, 170, 0.25);
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .course-code {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--blue-science);
+            padding: 0.4rem 0.8rem;
+            background: rgba(0, 180, 216, 0.15);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 180, 216, 0.3);
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        .course-name {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+            line-height: 1.4;
+            letter-spacing: 0.02em;
+            font-weight: 700;
+        }
+
+        .course-credits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.8rem;
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 2px solid var(--grid);
+        }
+
+        .credit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .credit-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.3rem;
+            font-family: 'Orbitron', sans-serif;
+            border: 2px solid;
+            transition: all 0.3s ease;
+        }
+
+        .credit-badge.theory {
+            background: linear-gradient(135deg, rgba(0, 255, 170, 0.2) 0%, rgba(0, 255, 170, 0.05) 100%);
+            color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 255, 170, 0.3);
+        }
+
+        .credit-badge.practice {
+            background: linear-gradient(135deg, rgba(0, 180, 216, 0.2) 0%, rgba(0, 180, 216, 0.05) 100%);
+            color: var(--blue-science);
+            border-color: var(--blue-science);
+            box-shadow: 0 0 15px rgba(0, 180, 216, 0.3);
+        }
+
+        .credit-badge.total {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2) 0%, rgba(255, 107, 157, 0.05) 100%);
+            color: var(--secondary);
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(255, 107, 157, 0.3);
+        }
+
+        .credit-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+
+        /* Prerequisites - Chemical Bonds */
+        .prerequisites {
+            margin-top: 1.2rem;
+            padding-top: 1.2rem;
+            border-top: 2px solid var(--grid);
+        }
+
+        .prereq-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.6rem;
+            font-weight: 600;
+        }
+
+        .prereq-label::before {
+            content: '🔗 ';
+        }
+
+        .prereq-code {
+            display: inline-block;
+            background: rgba(123, 44, 191, 0.15);
+            color: var(--purple-lab);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-family: 'IBM Plex Mono', monospace;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(123, 44, 191, 0.3);
+            font-weight: 600;
+        }
+
+        /* Legend - Lab Equipment Style */
+        .legend {
+            background: linear-gradient(135deg, rgba(22, 27, 34, 0.95) 0%, rgba(33, 38, 45, 0.8) 100%);
+            border: 2px solid var(--grid);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legend::before {
+            content: '🧪';
+            position: absolute;
+            top: 2rem;
+            right: 3rem;
+            font-size: 5rem;
+            opacity: 0.05;
+        }
+
+        .legend-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--blue-science) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: rgba(33, 38, 45, 0.5);
+            border-radius: 12px;
+            border: 1px solid var(--grid);
+            transition: all 0.3s ease;
+        }
+
+        .legend-item:hover {
+            transform: translateX(5px);
+            border-color: var(--primary);
+        }
+
+        .legend-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            font-family: 'Orbitron', sans-serif;
+            border: 2px solid;
+            flex-shrink: 0;
+        }
+
+        .legend-icon.theory { 
+            background: rgba(0, 255, 170, 0.15); 
+            color: var(--primary); 
+            border-color: var(--primary);
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+        }
+        .legend-icon.practice { 
+            background: rgba(0, 180, 216, 0.15); 
+            color: var(--blue-science); 
+            border-color: var(--blue-science);
+            box-shadow: 0 0 20px rgba(0, 180, 216, 0.3);
+        }
+        .legend-icon.total { 
+            background: rgba(255, 107, 157, 0.15); 
+            color: var(--secondary); 
+            border-color: var(--secondary);
+            box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .legend-text {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            font-weight: 500;
+        }
+
+        /* Formula Banner */
+        .formula-banner {
+            background: linear-gradient(135deg, var(--purple-lab) 0%, var(--blue-science) 100%);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .formula-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.03) 20px, rgba(255,255,255,0.03) 40px);
+        }
+
+        .formula-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            font-weight: 900;
+        }
+
+        .formula-subtitle {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            opacity: 0.9;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .semester-title { font-size: 2rem; }
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            .semester-nav {
+                gap: 0.5rem;
+                padding: 1.5rem;
+            }
+            .semester-btn {
+                padding: 1rem 1.3rem;
+                font-size: 0.9rem;
+            }
+            .formula-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Bubbling Animation */
+        @keyframes bubble {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+
+        .bubble {
+            position: fixed;
+            bottom: -50px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: bubble linear infinite;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Molecules Container -->
+    <div class="molecules-container" id="moleculesContainer"></div>
+
+    <!-- Bubbles -->
+    <div id="bubblesContainer"></div>
+
+    <div class="container">
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <h1 class="hero-title">INGENIERÍA QUÍMICA</h1>
+            <p class="hero-subtitle">TRANSFORMANDO MATERIA EN INNOVACIÓN</p>
+            <p class="hero-code">IQUI-2010-232</p>
+        </header>
+
+        <!-- Periodic Table Style Stats -->
+        <div class="stats-grid">
+            <div class="stat-element">
+                <span class="stat-symbol">IX</span>
+                <span class="stat-number">9</span>
+                <span class="stat-label">Semestres</span>
+            </div>
+            <div class="stat-element">
+                <span class="stat-symbol">Σ</span>
+                <span class="stat-number">232</span>
+                <span class="stat-label">Créditos</span>
+            </div>
+            <div class="stat-element">
+                <span class="stat-symbol">⚗️</span>
+                <span class="stat-number">8</span>
+                <span class="stat-label">Laboratorios</span>
+            </div>
+            <div class="stat-element">
+                <span class="stat-symbol">🧪</span>
+                <span class="stat-number">50+</span>
+                <span class="stat-label">Asignaturas</span>
+            </div>
+        </div>
+
+        <!-- Semester Navigator -->
+        <nav class="semester-nav" id="semesterNav"></nav>
+
+        <!-- Legend -->
+        <div class="legend">
+            <h3 class="legend-title">SISTEMA DE CRÉDITOS ACADÉMICOS</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-icon theory">T</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 700; color: var(--primary);">Horas Teoría</div>
+                        <div class="legend-text" style="font-size: 0.85rem;">Clases magistrales</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon practice">P</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 700; color: var(--blue-science);">Horas Práctica</div>
+                        <div class="legend-text" style="font-size: 0.85rem;">Laboratorio y taller</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon total">C</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 700; color: var(--secondary);">Créditos Totales</div>
+                        <div class="legend-text" style="font-size: 0.85rem;">Valor curricular</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Curriculum Sections -->
+        <div id="curriculumContainer"></div>
+
+        <!-- Formula Banner -->
+        <div class="formula-banner">
+            <h2 class="formula-title">INGENIERÍA QUÍMICA</h2>
+            <p class="formula-subtitle">Ciencia + Innovación = Futuro</p>
+        </div>
+    </div>
+
+    <script>
+        // Create floating molecules
+        function createMolecules() {
+            const container = document.getElementById('moleculesContainer');
+            const molecules = ['⚛️', '🧬', '⚗️', '🔬', '🧪', '💊'];
+            
+            for (let i = 0; i < 15; i++) {
+                const molecule = document.createElement('div');
+                molecule.className = 'molecule';
+                molecule.textContent = molecules[Math.floor(Math.random() * molecules.length)];
+                molecule.style.left = `${Math.random() * 100}%`;
+                molecule.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                molecule.style.animationDelay = `${Math.random() * 5}s`;
+                molecule.style.fontSize = `${Math.random() * 30 + 40}px`;
+                container.appendChild(molecule);
+            }
+        }
+
+        // Create bubbles
+        function createBubbles() {
+            const container = document.getElementById('bubblesContainer');
+            
+            setInterval(() => {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                bubble.style.left = `${Math.random() * 100}%`;
+                bubble.style.animationDuration = `${Math.random() * 3 + 4}s`;
+                bubble.style.width = `${Math.random() * 30 + 10}px`;
+                bubble.style.height = bubble.style.width;
+                container.appendChild(bubble);
+                
+                setTimeout(() => bubble.remove(), 7000);
+            }, 500);
+        }
+
+        createMolecules();
+        createBubbles();
+
+        const curriculumData = {
+            semesters: [
+                {
+                    number: 1,
+                    credits: 25,
+                    courses: [
+                        { code: "ACF-0901", name: "Cálculo Diferencial", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ACF-0902", name: "Cálculo Integral", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ACA-0907", name: "Taller de Ética", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "ACC-0906", name: "Fundamentos de Investigación", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "AEF-1060", name: "Química Inorgánica", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "AEF-1042", name: "Mecánica Clásica", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 2,
+                    credits: 31,
+                    courses: [
+                        { code: "ACF-0903", name: "Álgebra Lineal", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ACF-0904", name: "Cálculo Vectorial", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEO-1012", name: "Dibujo asistido por computadora", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "IQC-1018", name: "Programación", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "IQF-1019", name: "Química Orgánica I", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1003", name: "Electricidad, Magnetismo y Óptica", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEG-1059", name: "Química Analítica", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 3,
+                    credits: 30,
+                    courses: [
+                        { code: "ACF-0905", name: "Ecuaciones Diferenciales", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQH-1014", name: "Métodos Numéricos", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEF-1004", name: "Balance de Materia y Energía", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1024", name: "Química Orgánica II", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1001", name: "Análisis de Datos Experimentales", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1004", name: "Fisicoquímica I", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 4,
+                    credits: 29,
+                    courses: [
+                        { code: "IQF-1020", name: "Termodinámica", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQJ-1002", name: "Balances de Momentum, Calor y Masa", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEF-1003", name: "Análisis Instrumental", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1005", name: "Fisicoquímica II", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEF-1065", name: "Laboratorio Integral I", theory: 0, practice: 6, credits: 6, prereq: [] }
+                    ]
+                },
+                {
+                    number: 5,
+                    credits: 25,
+                    courses: [
+                        { code: "ACD-0908", name: "Desarrollo Sustentable", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "IQF-1013", name: "Mecanismos de Transferencia", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1015", name: "Procesos de Separación I", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1007", name: "Ingeniería Ambiental", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQN-1011", name: "Laboratorio Integral II", theory: 0, practice: 6, credits: 6, prereq: [] }
+                    ]
+                },
+                {
+                    number: 6,
+                    credits: 20,
+                    courses: [
+                        { code: "ACA-0909", name: "Taller de Investigación I", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "IQF-1016", name: "Procesos de Separación II", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1017", name: "Procesos de Separación III", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1021", name: "Reactores Químicos", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1022", name: "Salud y Seguridad en el Trabajo", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 7,
+                    credits: 25,
+                    courses: [
+                        { code: "IQC-1008", name: "Ingeniería de Costos", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQN-1010", name: "Síntesis y Optimización de Procesos", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ACA-0910", name: "Taller de Investigación II", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "IQD-1005", name: "Instrumentación y Control", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "IQF-1006", name: "Gestión de la Calidad", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "", name: "Actividades Complementarias", theory: 0, practice: 0, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 8,
+                    credits: 25,
+                    courses: [
+                        { code: "IQO-1009", name: "Taller de Administración Gerencial", theory: 0, practice: 3, credits: 3, prereq: [] },
+                        { code: "IQN-1012", name: "Simulación de Procesos", theory: 3, practice: 3, credits: 6, prereq: [] },
+                        { code: "IQM-1009", name: "Ingeniería de Proyectos", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEF-1031", name: "Laboratorio Integral III", theory: 0, practice: 6, credits: 6, prereq: [] },
+                        { code: "", name: "Servicio Social", theory: 0, practice: 0, credits: 10, prereq: [] }
+                    ]
+                },
+                {
+                    number: 9,
+                    credits: 20,
+                    courses: [
+                        { code: "", name: "Residencia Profesional", theory: 0, practice: 0, credits: 10, prereq: [] }
+                    ]
+                }
+            ]
+        };
+
+        // Generate semester navigation
+        const semesterNav = document.getElementById('semesterNav');
+        curriculumData.semesters.forEach((semester, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'semester-btn' + (index === 0 ? ' active' : '');
+            btn.textContent = `SEMESTRE ${semester.number}`;
+            btn.onclick = () => showSemester(index);
+            semesterNav.appendChild(btn);
+        });
+
+        // Generate curriculum sections
+        const curriculumContainer = document.getElementById('curriculumContainer');
+        curriculumData.semesters.forEach((semester, index) => {
+            const section = document.createElement('div');
+            section.className = 'curriculum-section' + (index === 0 ? ' active' : '');
+            section.id = `semester-${index}`;
+
+            const header = document.createElement('div');
+            header.className = 'semester-header';
+            header.innerHTML = `
+                <h2 class="semester-title">SEMESTRE ${semester.number}</h2>
+                <div class="semester-credits">${semester.credits} CRÉDITOS</div>
+            `;
+
+            const grid = document.createElement('div');
+            grid.className = 'courses-grid';
+
+            semester.courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card';
+                
+                let prereqHTML = '';
+                if (course.prereq && course.prereq.length > 0) {
+                    prereqHTML = `
+                        <div class="prerequisites">
+                            <div class="prereq-label">Prerequisitos</div>
+                            ${course.prereq.map(p => `<span class="prereq-code">${p}</span>`).join('')}
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="course-header">
+                        <div class="course-code">${course.code || 'ESPECIAL'}</div>
+                    </div>
+                    <h3 class="course-name">${course.name}</h3>
+                    <div class="course-credits">
+                        <div class="credit-item">
+                            <div class="credit-badge theory">${course.theory}</div>
+                            <span class="credit-label">Teoría</span>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-badge practice">${course.practice}</div>
+                            <span class="credit-label">Práctica</span>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-badge total">${course.credits}</div>
+                            <span class="credit-label">Créditos</span>
+                        </div>
+                    </div>
+                    ${prereqHTML}
+                `;
+
+                grid.appendChild(card);
+            });
+
+            section.appendChild(header);
+            section.appendChild(grid);
+            curriculumContainer.appendChild(section);
+        });
+
+        function showSemester(index) {
+            document.querySelectorAll('.semester-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+
+            document.querySelectorAll('.curriculum-section').forEach((section, i) => {
+                section.classList.toggle('active', i === index);
+            });
+
+            document.getElementById(`semester-${index}`).scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = `reactionFade 0.6s ease-out ${index * 0.04}s both`;
+                    }, index * 25);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.course-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

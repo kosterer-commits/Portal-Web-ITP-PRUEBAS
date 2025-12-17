@@ -1,0 +1,210 @@
+<!-- MENÚ DE ACCESIBILIDAD -->
+
+<!-- Botón flotante (solo visible en móvil) -->
+<button class="accessibility-fab" id="accessibility-btn-fab" aria-label="Menú de accesibilidad">
+    ♿
+</button>
+
+<!-- Overlay oscuro -->
+<div class="accessibility-overlay" id="accessibility-overlay"></div>
+
+<!-- Panel lateral de accesibilidad -->
+<div class="accessibility-panel" id="accessibility-panel">
+    <!-- Header del panel -->
+    <div class="accessibility-panel-header">
+        <h2>
+            <span class="accessibility-icon">♿</span>
+            Accesibilidad
+        </h2>
+        <button class="close-panel-btn" id="close-accessibility-panel" aria-label="Cerrar panel">
+            ✕
+        </button>
+    </div>
+
+    <!-- Contenido del panel -->
+    <div class="accessibility-panel-content">
+        
+        <!-- Sección: Tamaño de texto -->
+        <div class="accessibility-section">
+            <h3>📏 Tamaño de Texto</h3>
+            <p>Ajusta el tamaño del texto para facilitar la lectura</p>
+            
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Tamaño de fuente</strong>
+                    <span>Selecciona el tamaño preferido</span>
+                </div>
+                <div class="button-group">
+                    <button class="control-btn" data-size="small">Pequeño</button>
+                    <button class="control-btn active" data-size="normal">Normal</button>
+                    <button class="control-btn" data-size="large">Grande</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Contraste -->
+        <div class="accessibility-section">
+            <h3>🎨 Contraste y Color</h3>
+            <p>Mejora la visibilidad con diferentes esquemas de color</p>
+            
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Modo de contraste</strong>
+                    <span>Alto contraste para mejor visibilidad</span>
+                </div>
+                <div class="button-group">
+                    <button class="control-btn active" data-contrast="normal">Normal</button>
+                    <button class="control-btn" data-contrast="high">Alto</button>
+                    <button class="control-btn" data-contrast="inverted">Invertido</button>
+                </div>
+            </div>
+
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Escala de grises</strong>
+                    <span>Remueve los colores de la página</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="grayscale-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Sección: Espaciado y legibilidad -->
+        <div class="accessibility-section">
+            <h3>📐 Espaciado y Legibilidad</h3>
+            <p>Ajusta el espaciado entre líneas y letras</p>
+            
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Espaciado entre líneas</strong>
+                    <span>Aumenta el espacio entre líneas de texto</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="line-spacing-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Espaciado entre letras</strong>
+                    <span>Aumenta el espacio entre caracteres</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="letter-spacing-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Fuente legible</strong>
+                    <span>Cambia a una tipografía más clara</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="readable-font-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Sección: Ayudas de navegación -->
+        <div class="accessibility-section">
+            <h3>🧭 Ayudas de Navegación</h3>
+            <p>Herramientas para facilitar la navegación</p>
+            
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Resaltar enlaces</strong>
+                    <span>Hace los enlaces más visibles</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="highlight-links-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Cursor grande</strong>
+                    <span>Aumenta el tamaño del cursor</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="big-cursor-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Guía de lectura</strong>
+                    <span>Muestra una línea guía al leer</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="reading-guide-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Sección: Animaciones -->
+        <div class="accessibility-section">
+            <h3>🎬 Animaciones</h3>
+            <p>Controla las animaciones de la página</p>
+            
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Pausar animaciones</strong>
+                    <span>Desactiva animaciones y transiciones</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="pause-animations-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Sección: Enfoque y texto -->
+        <div class="accessibility-section">
+            <h3>🔍 Enfoque en Contenido</h3>
+            <p>Oculta elementos distractores</p>
+            
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Ocultar imágenes</strong>
+                    <span>Oculta todas las imágenes</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="hide-images-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <div class="accessibility-option">
+                <div class="accessibility-option-label">
+                    <strong>Modo de lectura</strong>
+                    <span>Enfoca solo en el contenido principal</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="reading-mode-toggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Botón de reinicio -->
+        <button class="reset-button" id="reset-accessibility">
+            <span>🔄</span>
+            Restablecer Todo
+        </button>
+
+        <!-- Información adicional -->
+        <div class="accessibility-section">
+            <p style="font-size: 0.85rem; color: #666; text-align: center; margin-top: 1rem;">
+                Las preferencias se guardan automáticamente en este navegador
+            </p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Estudios - Ingeniería Ferroviaria | TecNM Pachuca</title>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600;700&family=Russo+One&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f4a261;
+            --rail-steel: #8d99ae;
+            --bg-dark: #0b0d1a;
+            --bg-card: #1a1d2e;
+            --text-primary: #ffffff;
+            --text-secondary: #a8b2d1;
+            --grid: #2e344e;
+            --warning: #fb8500;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Railway Track Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(244, 162, 97, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(141, 153, 174, 0.06) 0%, transparent 60%);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 80px, var(--grid) 80px, var(--grid) 82px),
+                repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(141, 153, 174, 0.1) 20px, rgba(141, 153, 174, 0.1) 21px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        /* Moving Train Effect */
+        .train-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .train-light {
+            position: absolute;
+            width: 300px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), var(--warning), transparent);
+            opacity: 0.2;
+            animation: trainMove 8s linear infinite;
+        }
+
+        @keyframes trainMove {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100vw); }
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Header - Railway Station Style */
+        .hero-header {
+            text-align: center;
+            padding: 5rem 2rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '🚄';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 30rem;
+            transform: translate(-50%, -50%);
+            opacity: 0.02;
+            animation: trainSlide 10s ease-in-out infinite;
+        }
+
+        @keyframes trainSlide {
+            0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+            50% { transform: translate(-50%, -50%) translateX(50px); }
+        }
+
+        .hero-title {
+            font-family: 'Russo One', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 6rem);
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--warning) 50%, var(--rail-steel) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            animation: titleSpeed 3s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(230, 57, 70, 0.4));
+        }
+
+        @keyframes titleSpeed {
+            0%, 100% { 
+                letter-spacing: 0.15em;
+                filter: drop-shadow(0 0 30px rgba(230, 57, 70, 0.4));
+            }
+            50% { 
+                letter-spacing: 0.18em;
+                filter: drop-shadow(0 0 45px rgba(230, 57, 70, 0.6));
+            }
+        }
+
+        .hero-subtitle {
+            font-family: 'Teko', sans-serif;
+            font-size: clamp(1.2rem, 3vw, 2.2rem);
+            color: var(--accent);
+            letter-spacing: 0.3em;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(244, 162, 97, 0.6);
+            text-transform: uppercase;
+        }
+
+        .hero-code {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.3em;
+        }
+
+        .hero-code::before {
+            content: '🚂 ';
+        }
+
+        /* Station Board Stats */
+        .station-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .board-display {
+            background: linear-gradient(135deg, rgba(26, 29, 46, 0.95) 0%, rgba(46, 52, 78, 0.9) 100%);
+            border: 3px solid var(--grid);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .board-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--warning) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .board-display:hover::before {
+            opacity: 0.15;
+        }
+
+        .board-display:hover {
+            transform: translateY(-12px) scale(1.05);
+            border-color: var(--primary);
+            box-shadow: 
+                0 25px 70px rgba(230, 57, 70, 0.4),
+                inset 0 0 50px rgba(230, 57, 70, 0.1);
+        }
+
+        .board-icon {
+            font-size: 3.8rem;
+            margin-bottom: 1.2rem;
+            filter: drop-shadow(0 0 20px var(--primary));
+        }
+
+        .board-number {
+            font-family: 'Russo One', sans-serif;
+            font-size: 4rem;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--warning) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .board-label {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-weight: 600;
+        }
+
+        /* Railway Navigation */
+        .railway-nav {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(26, 29, 46, 0.95) 0%, rgba(46, 52, 78, 0.9) 100%);
+            border-radius: 20px;
+            border: 3px solid var(--grid);
+            position: relative;
+        }
+
+        .railway-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 60px,
+                rgba(230, 57, 70, 0.05) 60px,
+                rgba(230, 57, 70, 0.05) 62px
+            );
+            border-radius: 20px;
+        }
+
+        .station-btn {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 1.3rem 2rem;
+            background: linear-gradient(135deg, var(--bg-card) 0%, rgba(46, 52, 78, 0.95) 100%);
+            color: var(--text-primary);
+            border: 3px solid var(--grid);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .station-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .station-btn:hover::before {
+            width: 500px;
+            height: 500px;
+        }
+
+        .station-btn:hover {
+            border-color: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(230, 57, 70, 0.5);
+        }
+
+        .station-btn.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--warning) 100%);
+            color: var(--bg-dark);
+            border-color: var(--primary);
+            box-shadow: 0 0 50px rgba(230, 57, 70, 0.6);
+            font-weight: 700;
+        }
+
+        /* Curriculum Section */
+        .curriculum-section {
+            display: none;
+            animation: trainArrive 0.7s ease-in;
+        }
+
+        .curriculum-section.active {
+            display: block;
+        }
+
+        @keyframes trainArrive {
+            from { 
+                opacity: 0; 
+                transform: translateX(-100px) scale(0.95);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        .semester-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3rem 0 2rem 0;
+            padding: 3.5rem;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 50%, var(--warning) 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .semester-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 30px,
+                rgba(255, 255, 255, 0.05) 30px,
+                rgba(255, 255, 255, 0.05) 31px,
+                transparent 31px,
+                transparent 60px
+            );
+            animation: railPattern 2s linear infinite;
+        }
+
+        @keyframes railPattern {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(60px); }
+        }
+
+        .semester-header::after {
+            content: '🚂';
+            position: absolute;
+            right: 3.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 6rem;
+            opacity: 0.15;
+        }
+
+        .semester-title {
+            font-family: 'Russo One', sans-serif;
+            font-size: 3.5rem;
+            color: var(--text-primary);
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 35px rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .semester-credits {
+            font-family: 'Teko', sans-serif;
+            font-size: 2rem;
+            color: var(--text-primary);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.2em;
+            font-weight: 700;
+            backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Railway Course Cards */
+        .course-card {
+            background: linear-gradient(135deg, rgba(26, 29, 46, 0.98) 0%, rgba(46, 52, 78, 0.96) 100%);
+            border: 3px solid var(--grid);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--warning), var(--rail-steel));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card::after {
+            content: '🚄';
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            opacity: 0.05;
+            transition: all 0.4s ease;
+        }
+
+        .course-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .course-card:hover::after {
+            opacity: 0.15;
+            transform: translateX(10px);
+        }
+
+        .course-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            border-color: var(--primary);
+            box-shadow: 
+                0 25px 70px rgba(230, 57, 70, 0.3),
+                inset 0 0 50px rgba(230, 57, 70, 0.08);
+        }
+
+        .course-card.specialty {
+            border-color: var(--warning);
+            background: linear-gradient(135deg, rgba(244, 162, 97, 0.15) 0%, rgba(251, 133, 0, 0.1) 100%);
+        }
+
+        .course-card.specialty::after {
+            content: '⭐';
+        }
+
+        .course-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.2rem;
+        }
+
+        .course-code {
+            font-family: 'Teko', sans-serif;
+            font-size: 0.9rem;
+            color: var(--rail-steel);
+            padding: 0.5rem 1rem;
+            background: rgba(141, 153, 174, 0.15);
+            border-radius: 8px;
+            border: 2px solid rgba(141, 153, 174, 0.3);
+            letter-spacing: 0.15em;
+            font-weight: 700;
+        }
+
+        .specialty-badge {
+            font-family: 'Teko', sans-serif;
+            font-size: 0.8rem;
+            color: var(--warning);
+            background: rgba(251, 133, 0, 0.2);
+            padding: 0.4rem 0.9rem;
+            border-radius: 8px;
+            border: 2px solid var(--warning);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            animation: warningBlink 2s infinite;
+        }
+
+        @keyframes warningBlink {
+            0%, 100% { box-shadow: 0 0 15px var(--warning); }
+            50% { box-shadow: 0 0 30px var(--warning), 0 0 40px var(--warning); }
+        }
+
+        .course-name {
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            font-weight: 700;
+        }
+
+        .course-credits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 3px solid var(--grid);
+        }
+
+        .credit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .credit-badge {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.6rem;
+            font-family: 'Russo One', sans-serif;
+            border: 3px solid;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .credit-badge:hover {
+            transform: scale(1.15) rotate(-5deg);
+        }
+
+        .credit-badge.theory {
+            background: linear-gradient(135deg, rgba(230, 57, 70, 0.3) 0%, rgba(230, 57, 70, 0.1) 100%);
+            color: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 0 25px rgba(230, 57, 70, 0.5);
+        }
+
+        .credit-badge.practice {
+            background: linear-gradient(135deg, rgba(244, 162, 97, 0.3) 0%, rgba(244, 162, 97, 0.1) 100%);
+            color: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 25px rgba(244, 162, 97, 0.5);
+        }
+
+        .credit-badge.total {
+            background: linear-gradient(135deg, rgba(141, 153, 174, 0.3) 0%, rgba(141, 153, 174, 0.1) 100%);
+            color: var(--rail-steel);
+            border-color: var(--rail-steel);
+            box-shadow: 0 0 25px rgba(141, 153, 174, 0.5);
+        }
+
+        .credit-label {
+            font-family: 'Teko', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+        }
+
+        /* Prerequisites - Track Connections */
+        .prerequisites {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 3px solid var(--grid);
+        }
+
+        .prereq-label {
+            font-family: 'Teko', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .prereq-label::before {
+            content: '→→ ';
+            color: var(--primary);
+        }
+
+        .prereq-code {
+            display: inline-block;
+            background: rgba(29, 53, 87, 0.5);
+            color: var(--rail-steel);
+            padding: 0.35rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-family: 'Teko', sans-serif;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 2px solid var(--grid);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+        }
+
+        /* Railway Legend */
+        .railway-legend {
+            background: linear-gradient(135deg, rgba(26, 29, 46, 0.95) 0%, rgba(46, 52, 78, 0.9) 100%);
+            border: 4px solid var(--grid);
+            border-radius: 20px;
+            padding: 3.5rem;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .railway-legend::before {
+            content: '🚂';
+            position: absolute;
+            top: 2.5rem;
+            right: 3.5rem;
+            font-size: 9rem;
+            opacity: 0.03;
+        }
+
+        .legend-title {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--warning) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 3rem;
+            letter-spacing: 0.1em;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            padding: 2rem;
+            background: rgba(46, 52, 78, 0.6);
+            border-radius: 15px;
+            border: 3px solid var(--grid);
+            transition: all 0.3s ease;
+        }
+
+        .legend-item:hover {
+            transform: translateX(12px);
+            border-color: var(--primary);
+            box-shadow: 0 0 35px rgba(230, 57, 70, 0.3);
+        }
+
+        .legend-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 2.2rem;
+            font-family: 'Russo One', sans-serif;
+            border: 3px solid;
+            flex-shrink: 0;
+        }
+
+        .legend-icon.theory { 
+            background: rgba(230, 57, 70, 0.25); 
+            color: var(--primary); 
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(230, 57, 70, 0.5);
+        }
+        .legend-icon.practice { 
+            background: rgba(244, 162, 97, 0.25); 
+            color: var(--accent); 
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(244, 162, 97, 0.5);
+        }
+        .legend-icon.total { 
+            background: rgba(141, 153, 174, 0.25); 
+            color: var(--rail-steel); 
+            border-color: var(--rail-steel);
+            box-shadow: 0 0 30px rgba(141, 153, 174, 0.5);
+        }
+
+        .legend-text {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            font-weight: 700;
+        }
+
+        /* Railway Terminal Banner */
+        .terminal-banner {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: 20px;
+            padding: 5rem;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .terminal-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                rgba(230, 57, 70, 0.1) 40px,
+                rgba(230, 57, 70, 0.1) 42px,
+                transparent 42px,
+                transparent 80px
+            );
+            animation: terminalMove 8s linear infinite;
+        }
+
+        @keyframes terminalMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(80px); }
+        }
+
+        .terminal-banner::after {
+            content: '🚄🚂🚃';
+            position: absolute;
+            bottom: 2rem;
+            right: 3rem;
+            font-size: 3rem;
+            opacity: 0.2;
+        }
+
+        .banner-title {
+            font-family: 'Russo One', sans-serif;
+            font-size: 4rem;
+            color: var(--text-primary);
+            margin-bottom: 1.2rem;
+            letter-spacing: 0.15em;
+            text-shadow: 0 0 50px rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 1;
+        }
+
+        .banner-subtitle {
+            font-family: 'Teko', sans-serif;
+            font-size: 1.9rem;
+            color: var(--text-primary);
+            opacity: 0.95;
+            letter-spacing: 0.25em;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.5rem; }
+            .semester-title { font-size: 2.2rem; }
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            .railway-nav {
+                gap: 0.5rem;
+                padding: 1.8rem;
+            }
+            .station-btn {
+                padding: 1rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            .banner-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Train Container -->
+    <div class="train-container" id="trainContainer"></div>
+
+    <div class="container">
+        <!-- Hero Header -->
+        <header class="hero-header">
+            <h1 class="hero-title">INGENIERÍA FERROVIARIA</h1>
+            <p class="hero-subtitle">El Futuro del Transporte sobre Rieles</p>
+            <p class="hero-code">IFER-2023-245</p>
+        </header>
+
+        <!-- Station Board -->
+        <div class="station-board">
+            <div class="board-display">
+                <div class="board-icon">🚄</div>
+                <span class="board-number">9</span>
+                <span class="board-label">Semestres</span>
+            </div>
+            <div class="board-display">
+                <div class="board-icon">🎓</div>
+                <span class="board-number">260</span>
+                <span class="board-label">Créditos</span>
+            </div>
+            <div class="board-display">
+                <div class="board-icon">📚</div>
+                <span class="board-number">205</span>
+                <span class="board-label">Genéricos</span>
+            </div>
+            <div class="board-display">
+                <div class="board-icon">⭐</div>
+                <span class="board-number">30</span>
+                <span class="board-label">Especialidad</span>
+            </div>
+        </div>
+
+        <!-- Railway Navigator -->
+        <nav class="railway-nav" id="railwayNav"></nav>
+
+        <!-- Legend -->
+        <div class="railway-legend">
+            <h3 class="legend-title">SISTEMA DE CRÉDITOS</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-icon theory">T</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--primary);">Horas Teoría</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Clases teóricas</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon practice">P</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--accent);">Horas Práctica</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Talleres y laboratorio</div>
+                    </div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon total">C</div>
+                    <div>
+                        <div class="legend-text" style="font-weight: 900; color: var(--rail-steel);">Créditos Totales</div>
+                        <div class="legend-text" style="font-size: 0.9rem;">Valor curricular</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Curriculum Sections -->
+        <div id="curriculumContainer"></div>
+
+        <!-- Terminal Banner -->
+        <div class="terminal-banner">
+            <h2 class="banner-title">ESPECIALIDAD</h2>
+            <p class="banner-subtitle">Sistemas Ferroviarios de Alta Velocidad</p>
+        </div>
+    </div>
+
+    <script>
+        // Create train light effects
+        function createTrainLights() {
+            const container = document.getElementById('trainContainer');
+            
+            for (let i = 0; i < 6; i++) {
+                const light = document.createElement('div');
+                light.className = 'train-light';
+                light.style.top = `${Math.random() * 100}%`;
+                light.style.animationDelay = `${i * 1.5}s`;
+                container.appendChild(light);
+            }
+        }
+
+        createTrainLights();
+
+        const curriculumData = {
+            semesters: [
+                {
+                    number: 1,
+                    credits: 25,
+                    courses: [
+                        { code: "ACF-0901", name: "Cálculo Diferencial", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ACC-0906", name: "Fundamentos de Investigación", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "ACA-0907", name: "Taller de Ética", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "AEH-23114", name: "Introducción a la Programación", theory: 1, practice: 3, credits: 4, prereq: [] },
+                        { code: "FEP-2310", name: "Introducción a la Ingeniería Ferroviaria", theory: 3, practice: 0, credits: 3, prereq: [] },
+                        { code: "ACD-0908", name: "Desarrollo Sustentable", theory: 2, practice: 3, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 2,
+                    credits: 30,
+                    courses: [
+                        { code: "ACF-0902", name: "Cálculo Integral", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEA-1013", name: "Dibujo Asistido por Computadora", theory: 0, practice: 4, credits: 4, prereq: [] },
+                        { code: "FEC-2319", name: "Topografía para Vías Ferroviarias", theory: 4, practice: 4, credits: 8, prereq: [] },
+                        { code: "AEH-1393", name: "Metrología y Normalización", theory: 1, practice: 3, credits: 4, prereq: [] },
+                        { code: "AEE-1051", name: "Probabilidad y Estadística", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "ACF-0903", name: "Álgebra Lineal", theory: 3, practice: 2, credits: 5, prereq: [] }
+                    ]
+                },
+                {
+                    number: 3,
+                    credits: 28,
+                    courses: [
+                        { code: "ACF-0904", name: "Cálculo Vectorial", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEF-1042", name: "Mecánica Clásica", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "FEI-2309", name: "Introducción a la Administración y Economía", theory: 4, practice: 0, credits: 4, prereq: [] },
+                        { code: "AEF-1020", name: "Electromagnetismo", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AEF-23116", name: "Ciencia e Ingeniería de los Materiales", theory: 3, practice: 1, credits: 4, prereq: [] },
+                        { code: "FEE-2307", name: "Gestión Ambiental Ferroviaria", theory: 3, practice: 1, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 4,
+                    credits: 28,
+                    courses: [
+                        { code: "ACF-0905", name: "Ecuaciones Diferenciales", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "AED-1067", name: "Vibraciones Mecánicas", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "AEO-23118", name: "Innovación y Gestión del Conocimiento", theory: 0, practice: 3, credits: 3, prereq: [] },
+                        { code: "AED-23117", name: "Circuitos Eléctricos y Electrónicos", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "FEJ-2314", name: "Principios Básicos de Geotecnia", theory: 4, practice: 2, credits: 6, prereq: [] },
+                        { code: "AEC-1046", name: "Métodos Numéricos", theory: 2, practice: 2, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 5,
+                    credits: 29,
+                    courses: [
+                        { code: "AEC-1034", name: "Fundamentos de Telecomunicaciones", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "AED-23115", name: "Diseño Mecánico I", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "FEF-2304", name: "Ferrocarriles", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "FED-2302", name: "Circuitos Electrónicos de Potencia", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "FEG-2306", name: "Geotecnia Aplicada a la Infraestructura Ferroviaria", theory: 3, practice: 3, credits: 6, prereq: [] },
+                        { code: "ACA-0909", name: "Taller de Investigación I", theory: 0, practice: 4, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 6,
+                    credits: 33,
+                    courses: [
+                        { code: "AEF-1038", name: "Instrumentación", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "FEF-2313", name: "Material Rodante", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "FED-2318", name: "Supervisión y Control de Calidad de la Infraestructura Ferroviaria", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "FEO-2303", name: "Electrificación de Sistemas Ferroviarios", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "FEF-2308", name: "Gestión de la Calidad del Servicio Ferroviario", theory: 3, practice: 2, credits: 5, prereq: [] },
+                        { code: "FEF-2311", name: "Logística Ferroviaria", theory: 5, practice: 3, credits: 8, prereq: [] }
+                    ]
+                },
+                {
+                    number: 7,
+                    credits: 22,
+                    courses: [
+                        { code: "FEC-2317", name: "Sistemas Neumáticos Ferroviarios", theory: 2, practice: 2, credits: 4, prereq: [] },
+                        { code: "FEJ-2316", name: "Sistemas de Tracción y de Frenado", theory: 4, practice: 2, credits: 6, prereq: [] },
+                        { code: "FED-2315", name: "Sistemas de Señalización y Control", theory: 2, practice: 3, credits: 5, prereq: [] },
+                        { code: "AEF-23119", name: "Fundamentos de Información Financiera", theory: 3, practice: 0, credits: 3, prereq: [] },
+                        { code: "ACA-0910", name: "Taller de Investigación II", theory: 0, practice: 4, credits: 4, prereq: [] }
+                    ]
+                },
+                {
+                    number: 8,
+                    credits: 10,
+                    courses: [
+                        { code: "FED-2301", name: "Automatización Ferroviaria", theory: 2, practice: 3, credits: 5, specialty: true, prereq: [] },
+                        { code: "", name: "Servicio Social", theory: 0, practice: 0, credits: 10, prereq: [] }
+                    ]
+                },
+                {
+                    number: 9,
+                    credits: 10,
+                    courses: [
+                        { code: "FED-2312", name: "Mantenimiento en Sistemas Ferroviarias", theory: 2, practice: 3, credits: 5, specialty: true, prereq: [] },
+                        { code: "", name: "Residencia Profesional", theory: 0, practice: 0, credits: 10, prereq: [] },
+                        { code: "", name: "Actividades Complementarias", theory: 0, practice: 0, credits: 5, prereq: [] }
+                    ]
+                }
+            ]
+        };
+
+        // Generate railway navigator
+        const railwayNav = document.getElementById('railwayNav');
+        curriculumData.semesters.forEach((semester, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'station-btn' + (index === 0 ? ' active' : '');
+            btn.textContent = `SEM ${semester.number}`;
+            btn.onclick = () => showSemester(index);
+            railwayNav.appendChild(btn);
+        });
+
+        // Generate curriculum sections
+        const curriculumContainer = document.getElementById('curriculumContainer');
+        curriculumData.semesters.forEach((semester, index) => {
+            const section = document.createElement('div');
+            section.className = 'curriculum-section' + (index === 0 ? ' active' : '');
+            section.id = `semester-${index}`;
+
+            const header = document.createElement('div');
+            header.className = 'semester-header';
+            header.innerHTML = `
+                <h2 class="semester-title">ESTACIÓN ${semester.number}</h2>
+                <div class="semester-credits">${semester.credits} CRÉDITOS</div>
+            `;
+
+            const grid = document.createElement('div');
+            grid.className = 'courses-grid';
+
+            semester.courses.forEach(course => {
+                const card = document.createElement('div');
+                card.className = 'course-card' + (course.specialty ? ' specialty' : '');
+                
+                let prereqHTML = '';
+                if (course.prereq && course.prereq.length > 0) {
+                    prereqHTML = `
+                        <div class="prerequisites">
+                            <div class="prereq-label">Prerequisitos</div>
+                            ${course.prereq.map(p => `<span class="prereq-code">${p}</span>`).join('')}
+                        </div>
+                    `;
+                }
+
+                const specialtyBadge = course.specialty ? '<span class="specialty-badge">ESPECIALIDAD</span>' : '';
+
+                card.innerHTML = `
+                    <div class="course-header">
+                        <div class="course-code">${course.code || 'ESPECIAL'}</div>
+                        ${specialtyBadge}
+                    </div>
+                    <h3 class="course-name">${course.name}</h3>
+                    <div class="course-credits">
+                        <div class="credit-item">
+                            <div class="credit-badge theory">${course.theory}</div>
+                            <span class="credit-label">Teoría</span>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-badge practice">${course.practice}</div>
+                            <span class="credit-label">Práctica</span>
+                        </div>
+                        <div class="credit-item">
+                            <div class="credit-badge total">${course.credits}</div>
+                            <span class="credit-label">Créditos</span>
+                        </div>
+                    </div>
+                    ${prereqHTML}
+                `;
+
+                grid.appendChild(card);
+            });
+
+            section.appendChild(header);
+            section.appendChild(grid);
+            curriculumContainer.appendChild(section);
+        });
+
+        function showSemester(index) {
+            document.querySelectorAll('.station-btn').forEach((btn, i) => {
+                btn.classList.toggle('active', i === index);
+            });
+
+            document.querySelectorAll('.curriculum-section').forEach((section, i) => {
+                section.classList.toggle('active', i === index);
+            });
+
+            document.getElementById(`semester-${index}`).scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'start' 
+            });
+        }
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.animation = `trainArrive 0.7s ease-out ${index * 0.03}s both`;
+                    }, index * 20);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.course-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

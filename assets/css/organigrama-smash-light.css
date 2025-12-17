@@ -1,0 +1,963 @@
+/* ============================================
+   ORGANIGRAMA TecNM - TEMA CLARO IMPRESIONANTE
+   Diseño profesional y moderno
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    color: #2c3e50;
+    overflow-x: hidden;
+}
+
+/* ============================================
+   HERO SECTION - ÉPICO
+   ============================================ */
+
+.org-hero {
+    position: relative;
+    height: 35vh; /* Reducido de 60vh */
+    min-height: 300px; /* Reducido de 500px */
+    background: linear-gradient(135deg, #005eb8 0%, #0077cc 50%, #005eb8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 40px rgba(0, 94, 184, 0.3),
+        inset 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Patrón geométrico animado */
+.org-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        repeating-linear-gradient(45deg, transparent, transparent 50px, rgba(255, 255, 255, 0.03) 50px, rgba(255, 255, 255, 0.03) 51px);
+    animation: patternMove 20s linear infinite;
+}
+
+@keyframes patternMove {
+    0% { background-position: 0% 0%, 0% 0%, 0 0; }
+    100% { background-position: 100% 100%, -100% -100%, 71px 71px; }
+}
+
+.org-hero-flames {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse at 20% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+    animation: flameFlicker 3s ease-in-out infinite;
+}
+
+@keyframes flameFlicker {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+.org-hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.org-logo {
+    width: 120px; /* Reducido de 220px */
+    height: auto;
+    margin-bottom: 1.2rem; /* Reducido de 2rem */
+    filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3)) brightness(1.15);
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.org-hero-title {
+    font-size: 2.8rem; /* Reducido de 6rem */
+    font-weight: 900;
+    letter-spacing: 8px; /* Reducido de 12px */
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 
+        0 5px 0 rgba(0, 61, 122, 0.6),
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.8rem; /* Reducido de 1rem */
+    animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+    0%, 100% { 
+        text-shadow: 
+            0 5px 0 rgba(0, 61, 122, 0.6),
+            0 10px 30px rgba(0, 0, 0, 0.4),
+            0 0 80px rgba(255, 255, 255, 0.6);
+    }
+    50% { 
+        text-shadow: 
+            0 5px 0 rgba(0, 61, 122, 0.6),
+            0 10px 30px rgba(0, 0, 0, 0.4),
+            0 0 100px rgba(255, 255, 255, 0.9);
+    }
+}
+
+.org-hero-subtitle {
+    font-size: 1.1rem; /* Reducido de 1.8rem */
+    letter-spacing: 4px; /* Reducido de 5px */
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+}
+
+/* ============================================
+   CONTROLES - OCULTOS (Ya no se usa)
+   ============================================ */
+
+.org-controls {
+    display: none; /* Eliminado del diseño */
+}
+
+.org-controls::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        #005eb8 0%, 
+        #00b4ff 50%, 
+        #005eb8 100%);
+    animation: borderGlow 3s ease-in-out infinite;
+}
+
+@keyframes borderGlow {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.org-controls-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.org-controls-title {
+    font-size: 2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2.5rem;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1rem;
+}
+
+.org-controls-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #005eb8, transparent);
+    border-radius: 2px;
+}
+
+.org-controls-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.org-sort-btn {
+    padding: 1.3rem 3.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border: 3px solid #dee2e6;
+    border-radius: 50px;
+    color: #2c3e50;
+    font-size: 1.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.08),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.org-sort-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 94, 184, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.org-sort-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(0, 94, 184, 0.1);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.org-sort-btn:hover::before {
+    left: 100%;
+}
+
+.org-sort-btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.org-sort-btn:hover {
+    border-color: #005eb8;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 94, 184, 0.25);
+    background: #ffffff;
+    color: #005eb8;
+}
+
+.org-sort-btn.active {
+    background: linear-gradient(135deg, #005eb8 0%, #0077cc 100%);
+    border-color: #005eb8;
+    color: #ffffff;
+    box-shadow: 
+        0 8px 30px rgba(0, 94, 184, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.org-sort-btn.active::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+}
+
+/* ============================================
+   ROSTER GRID - CARDS MÁS GRANDES
+   ============================================ */
+
+.org-roster {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+    padding: 5rem 2rem;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* Patrón de puntos sutil */
+.org-roster::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(0, 94, 184, 0.04) 1px, transparent 0);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+.org-roster-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2.5rem;
+    padding-top: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   CARDS REDISEÑADOS - MÁS GRANDES Y COMPLETOS
+   ============================================ */
+
+.org-fighter {
+    position: relative;
+    aspect-ratio: 3/4;
+    background: #ffffff;
+    border: 3px solid #e9ecef;
+    border-radius: 20px;
+    cursor: pointer;
+    overflow: visible; /* Permite logo sobresalir */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.08),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.org-fighter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, 
+        rgba(0, 94, 184, 0.02) 0%, 
+        rgba(0, 119, 204, 0.02) 100%);
+    pointer-events: none;
+    border-radius: 20px;
+}
+
+.org-fighter:hover {
+    transform: translateY(-8px);
+    border-color: #005eb8;
+    box-shadow: 
+        0 20px 60px rgba(0, 94, 184, 0.25),
+        0 0 0 4px rgba(0, 94, 184, 0.1);
+    z-index: 10;
+    background: #ffffff;
+}
+
+/* Logo del Instituto - Esquina Superior Derecha */
+.org-fighter-logo {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 60px;
+    height: 60px;
+    background: #ffffff;
+    border: 3px solid #005eb8;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    box-shadow: 
+        0 4px 15px rgba(0, 94, 184, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    transition: all 0.3s ease;
+}
+
+.org-fighter-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.org-fighter:hover .org-fighter-logo {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 6px 20px rgba(0, 94, 184, 0.4),
+        inset 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+/* Imagen - SIN SUPERPOSICIÓN */
+.org-fighter-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%; /* 60% superior para la imagen */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+    border-radius: 20px 20px 0 0;
+}
+
+.org-fighter-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top; /* Cambio: center top para mejor encuadre */
+    filter: 
+        drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15))
+        contrast(1.05)
+        saturate(1.1);
+    transition: filter 0.3s ease;
+    transform: none;
+}
+
+.org-fighter:hover .org-fighter-image img {
+    filter: 
+        drop-shadow(0 8px 20px rgba(0, 94, 184, 0.3))
+        contrast(1.08)
+        saturate(1.15)
+        brightness(1.05);
+    transform: none;
+}
+
+/* Contenedor de Información - SIN SUPERPOSICIÓN */
+.org-fighter-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%; /* 40% inferior, exactamente donde termina la imagen */
+    background: linear-gradient(to top, 
+        rgba(255, 255, 255, 0.98) 0%, 
+        rgba(255, 255, 255, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    padding: 0.9rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    z-index: 3;
+    border-top: 3px solid rgba(0, 94, 184, 0.2);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border-radius: 0 0 17px 17px;
+}
+
+.org-fighter:hover .org-fighter-info {
+    background: linear-gradient(to top, 
+        rgba(0, 94, 184, 0.95) 0%, 
+        rgba(0, 94, 184, 0.9) 100%);
+    border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Nombre Completo con Grado */
+.org-fighter-fullname {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #2c3e50;
+    text-align: center;
+    transition: color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+.org-fighter:hover .org-fighter-fullname {
+    color: #ffffff;
+}
+
+/* Cargo en el Instituto */
+.org-fighter-position {
+    font-size: 0.7rem;
+    line-height: 1.3;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #005eb8;
+    text-align: center;
+    transition: color 0.3s ease;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+}
+
+.org-fighter:hover .org-fighter-position {
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* Overlay - Sutil */
+.org-fighter-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: radial-gradient(ellipse at center, 
+        rgba(0, 94, 184, 0.08) 0%, 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 2;
+    border-radius: 20px 20px 0 0;
+}
+
+.org-fighter:hover .org-fighter-overlay {
+    opacity: 1;
+}
+
+/* Overlay - SUTIL */
+.org-fighter-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, 
+        rgba(0, 94, 184, 0.08) 0%, 
+        transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.org-fighter:hover .org-fighter-overlay {
+    opacity: 1;
+}
+
+/* ============================================
+   PANEL LATERAL - MODERNO CLARO
+   ============================================ */
+
+.org-panel {
+    position: fixed;
+    top: 0;
+    right: -550px;
+    width: 550px;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-left: 5px solid #005eb8;
+    box-shadow: -10px 0 50px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    overflow-y: auto;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.org-panel.active {
+    right: 0;
+}
+
+.org-panel-close {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #005eb8 0%, #0077cc 100%);
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(0, 94, 184, 0.4);
+}
+
+.org-panel-close:hover {
+    transform: rotate(90deg) scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 94, 184, 0.5);
+}
+
+.org-panel-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Número grande ELIMINADO */
+
+/* Imagen grande - Ahora es el primer elemento */
+.org-panel-image {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(135deg, 
+        rgba(0, 94, 184, 0.05) 0%, 
+        rgba(0, 119, 204, 0.05) 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 2rem;
+    border-radius: 20px;
+    border: 3px solid #e9ecef;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.org-panel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center bottom;
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.2));
+}
+
+/* Info */
+.org-panel-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.org-panel-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #2c3e50;
+    line-height: 1.2;
+    border-bottom: 4px solid #005eb8;
+    padding-bottom: 0.75rem;
+}
+
+.org-panel-position {
+    font-size: 1.3rem;
+    color: #005eb8;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.org-panel-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.org-panel-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    background: #ffffff;
+    border-left: 4px solid #005eb8;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.org-detail-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #005eb8;
+}
+
+.org-detail-value {
+    font-size: 1rem;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+/* ============================================
+   ORDENAMIENTO POR CATEGORÍA - MEJORADO
+   ============================================ */
+
+.org-roster-grid.sort-by-category {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem; /* Más espacio entre categorías */
+}
+
+.org-department-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem; /* Espacio entre título y grid */
+}
+
+.org-department-title {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #005eb8;
+    letter-spacing: 2px;
+    border-bottom: 4px solid #005eb8;
+    padding-bottom: 1rem;
+    margin-bottom: 0;
+    position: relative;
+}
+
+.org-department-title::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, #0077cc, transparent);
+}
+
+.org-department-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 2.5rem;
+    padding-top: 1rem;
+}
+
+/* ============================================
+   RESPONSIVE - CARDS MÁS GRANDES
+   ============================================ */
+
+/* Large Desktop */
+@media (min-width: 1400px) {
+    .org-roster-grid,
+    .org-department-grid {
+        grid-template-columns: repeat(5, 1fr); /* 5 columnas para cards grandes */
+    }
+}
+
+/* Desktop */
+@media (max-width: 1200px) {
+    .org-roster-grid,
+    .org-department-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+        gap: 2rem;
+    }
+    
+    .org-hero-title {
+        font-size: 4.5rem;
+    }
+    
+    .org-roster-grid.sort-by-category {
+        gap: 4rem;
+    }
+}
+
+/* Tablet Grande */
+@media (max-width: 1024px) {
+    .org-roster-grid,
+    .org-department-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+        gap: 2rem;
+    }
+    
+    .org-fighter-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .org-fighter-fullname {
+        font-size: 0.7rem;
+    }
+    
+    .org-fighter-position {
+        font-size: 0.65rem;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .org-hero {
+        height: 30vh;
+        min-height: 250px;
+    }
+    
+    .org-logo {
+        width: 100px;
+    }
+    
+    .org-hero-title {
+        font-size: 2rem;
+        letter-spacing: 6px;
+    }
+    
+    .org-hero-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 3px;
+    }
+    
+    .org-roster {
+        padding: 3rem 1.5rem;
+    }
+    
+    .org-roster-grid,
+    .org-department-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+        gap: 1.5rem;
+    }
+    
+    .org-roster-grid.sort-by-category {
+        gap: 3rem;
+    }
+    
+    .org-department-section {
+        gap: 2rem;
+    }
+    
+    .org-department-title {
+        font-size: 1.6rem;
+    }
+    
+    .org-fighter-logo {
+        width: 45px;
+        height: 45px;
+        top: -6px;
+        right: -6px;
+    }
+    
+    .org-fighter-info {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .org-fighter-fullname {
+        font-size: 0.65rem;
+    }
+    
+    .org-fighter-position {
+        font-size: 0.6rem;
+    }
+    
+    .org-panel {
+        width: 100%;
+        right: -100%;
+    }
+    
+    .org-controls-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .org-sort-btn {
+        width: 100%;
+    }
+}
+
+/* Móvil */
+@media (max-width: 480px) {
+    .org-hero {
+        height: 25vh;
+        min-height: 200px;
+    }
+    
+    .org-logo {
+        width: 80px;
+        margin-bottom: 1rem;
+    }
+    
+    .org-hero-title {
+        font-size: 1.6rem;
+        letter-spacing: 4px;
+    }
+    
+    .org-hero-subtitle {
+        font-size: 0.75rem;
+        letter-spacing: 2px;
+    }
+    
+    .org-roster {
+        padding: 2rem 1rem;
+    }
+    
+    .org-roster-grid,
+    .org-department-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móvil */
+        gap: 1.25rem;
+    }
+    
+    .org-roster-grid.sort-by-category {
+        gap: 2.5rem;
+    }
+    
+    .org-department-section {
+        gap: 1.5rem;
+    }
+    
+    .org-department-title {
+        font-size: 1.4rem;
+        padding-bottom: 0.75rem;
+    }
+    
+    .org-fighter-logo {
+        width: 40px;
+        height: 40px;
+        top: -5px;
+        right: -5px;
+        padding: 6px;
+    }
+    
+    .org-fighter-info {
+        padding: 0.65rem 0.4rem;
+        gap: 0.4rem;
+    }
+    
+    .org-fighter-fullname {
+        font-size: 0.6rem;
+    }
+    
+    .org-fighter-position {
+        font-size: 0.55rem;
+    }
+    
+    .org-fighter:hover {
+        transform: translateY(-5px);
+    }
+    
+    .org-panel-title {
+        font-size: 1.8rem;
+    }
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.org-fighter {
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+}
+
+.org-fighter:nth-child(1) { animation-delay: 0.05s; }
+.org-fighter:nth-child(2) { animation-delay: 0.1s; }
+.org-fighter:nth-child(3) { animation-delay: 0.15s; }
+.org-fighter:nth-child(4) { animation-delay: 0.2s; }
+.org-fighter:nth-child(5) { animation-delay: 0.25s; }
+.org-fighter:nth-child(6) { animation-delay: 0.3s; }
+.org-fighter:nth-child(7) { animation-delay: 0.35s; }
+.org-fighter:nth-child(8) { animation-delay: 0.4s; }
+.org-fighter:nth-child(9) { animation-delay: 0.45s; }
+.org-fighter:nth-child(n+10) { animation-delay: 0.5s; }
+
+/* Overlay de body cuando panel está abierto */
+.body-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.body-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}

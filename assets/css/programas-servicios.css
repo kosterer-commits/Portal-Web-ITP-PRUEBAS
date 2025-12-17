@@ -1,0 +1,391 @@
+/* ===== PROGRAMAS ACADÉMICOS ===== */
+.programas-section {
+    padding: var(--space-5xl) 0;
+    background: var(--bg-light);
+}
+
+.programas-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.programas-title {
+    font-size: var(--font-5xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--primary-dark);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.programas-subtitle {
+    font-size: var(--font-lg);
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: var(--space-4xl);
+}
+
+/* Filtros */
+.programas-filters {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-5xl);
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: var(--space-sm) var(--space-lg);
+    border: 2px solid var(--gray-300);
+    background: transparent;
+    color: var(--text-primary);
+    border-radius: var(--radius-md);
+    font-size: var(--font-base);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.filter-btn:hover {
+    border-color: var(--primary-main);
+    color: var(--primary-main);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: var(--primary-main);
+    box-shadow: var(--shadow-md);
+}
+
+/* Grid de Programas */
+.programas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-xl);
+    margin-top: var(--space-5xl);
+}
+
+.programa-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid var(--primary-main);
+}
+
+.programa-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-top-color: var(--secondary-cyan);
+}
+
+.programa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-lg);
+}
+
+.programa-icon {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.programa-badge {
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--primary-main);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-size: var(--font-xs);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+}
+
+.programa-badge.online-badge {
+    background: var(--secondary-cyan);
+}
+
+.programa-badge.posgrado-badge {
+    background: #9C27B0;
+}
+
+.programa-nombre {
+    font-size: var(--font-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-dark);
+    margin-bottom: var(--space-sm);
+}
+
+.programa-duracion {
+    font-size: var(--font-sm);
+    color: var(--secondary-cyan);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--space-md);
+}
+
+.programa-descripcion {
+    font-size: var(--font-base);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-lg);
+    flex-grow: 1;
+}
+
+.programa-btn {
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: var(--font-base);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    align-self: flex-start;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.programa-btn:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+.programa-btn:active {
+    transform: scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .programas-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 992px) {
+    .programas-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-lg);
+    }
+    
+    .programas-title {
+        font-size: var(--font-4xl);
+    }
+}
+
+@media (max-width: 768px) {
+    .programas-section {
+        padding: var(--space-4xl) 0;
+    }
+    
+    .programas-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .programas-subtitle {
+        margin-bottom: var(--space-3xl);
+    }
+    
+    .filter-btn {
+        padding: var(--space-xs) var(--space-md);
+        font-size: var(--font-sm);
+    }
+}
+
+/* ===== SERVICIOS PARA ESTUDIANTES ===== */
+.servicios-section {
+    padding: var(--space-5xl) 0;
+    background: white;
+}
+
+.servicios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+}
+
+.servicios-title {
+    font-size: var(--font-5xl);
+    font-weight: var(--font-weight-extrabold);
+    color: var(--primary-dark);
+    margin-bottom: var(--space-sm);
+    text-align: center;
+}
+
+.servicios-subtitle {
+    font-size: var(--font-lg);
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: var(--space-5xl);
+}
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+}
+
+.servicio-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-2xl);
+    text-align: center;
+    transition: all var(--transition-normal);
+    border-top: 5px solid;
+    box-shadow: var(--shadow-sm);
+}
+
+.servicio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Colores diferentes para cada servicio */
+.servicio-1 {
+    border-top-color: #3B82F6;
+}
+
+.servicio-2 {
+    border-top-color: #10B981;
+}
+
+.servicio-3 {
+    border-top-color: #F59E0B;
+}
+
+.servicio-4 {
+    border-top-color: #EF4444;
+}
+
+.servicio-5 {
+    border-top-color: #8B5CF6;
+}
+
+.servicio-6 {
+    border-top-color: #EC4899;
+}
+
+.servicio-icon {
+    font-size: 3.5rem;
+    margin-bottom: var(--space-lg);
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+.servicio-1 .servicio-icon {
+    animation-delay: 0s;
+}
+
+.servicio-2 .servicio-icon {
+    animation-delay: 0.2s;
+}
+
+.servicio-3 .servicio-icon {
+    animation-delay: 0.4s;
+}
+
+.servicio-4 .servicio-icon {
+    animation-delay: 0.6s;
+}
+
+.servicio-5 .servicio-icon {
+    animation-delay: 0.8s;
+}
+
+.servicio-6 .servicio-icon {
+    animation-delay: 1s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.servicio-titulo {
+    font-size: var(--font-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-dark);
+    margin-bottom: var(--space-md);
+}
+
+.servicio-descripcion {
+    font-size: var(--font-base);
+    color: var(--text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-lg);
+}
+
+.servicio-link {
+    display: inline-block;
+    color: var(--primary-main);
+    text-decoration: none;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-base);
+    transition: all var(--transition-normal);
+    position: relative;
+}
+
+.servicio-link::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary-cyan);
+    transition: width var(--transition-normal);
+}
+
+.servicio-link:hover::after {
+    width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .servicios-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .servicios-section {
+        padding: var(--space-4xl) 0;
+    }
+    
+    .servicios-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    
+    .servicios-title {
+        font-size: var(--font-4xl);
+    }
+    
+    .servicio-icon {
+        font-size: 2.5rem;
+    }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .programa-card,
+    .filter-btn,
+    .servicio-card,
+    .servicio-link,
+    .servicio-icon {
+        transition: none;
+        animation: none;
+    }
+}

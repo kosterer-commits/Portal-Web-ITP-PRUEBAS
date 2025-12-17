@@ -1,0 +1,274 @@
+/* ============================================
+   SISTEMA DE TÍTULOS EN HEADER - TYPEWRITER
+   ============================================ */
+
+.page-title-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.typewriter-title {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    line-height: 1.4;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.typewriter-text {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+}
+
+/* Cursor parpadeante */
+.typewriter-cursor {
+    display: inline-block;
+    color: white;
+    animation: blink 1s step-end infinite;
+    font-weight: 300;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Efecto de resplandor sutil */
+.typewriter-title {
+    position: relative;
+}
+
+.typewriter-title::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+    transition: width 0.5s ease;
+}
+
+.typewriter-title.typing-complete::after {
+    width: 100%;
+}
+
+/* ============================================
+   COMPATIBILIDAD CON ACCESIBILIDAD
+   ============================================ */
+
+/* Variante con gradiente */
+.typewriter-title.gradient-text .typewriter-text {
+    background: linear-gradient(90deg, #ffffff, #e3f2fd, #ffffff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    to {
+        background-position: 200% center;
+    }
+}
+
+/* Variante con efecto neón */
+.typewriter-title.neon-text {
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8),
+        0 0 10px rgba(255, 255, 255, 0.6),
+        0 0 20px rgba(255, 255, 255, 0.4),
+        0 0 30px rgba(66, 153, 225, 0.6),
+        0 0 40px rgba(66, 153, 225, 0.4);
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+@keyframes neonPulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px rgba(255, 255, 255, 0.8),
+            0 0 10px rgba(255, 255, 255, 0.6),
+            0 0 20px rgba(255, 255, 255, 0.4),
+            0 0 30px rgba(66, 153, 225, 0.6),
+            0 0 40px rgba(66, 153, 225, 0.4);
+    }
+    50% {
+        text-shadow: 
+            0 0 7px rgba(255, 255, 255, 1),
+            0 0 15px rgba(255, 255, 255, 0.8),
+            0 0 25px rgba(255, 255, 255, 0.6),
+            0 0 35px rgba(66, 153, 225, 0.8),
+            0 0 50px rgba(66, 153, 225, 0.6);
+    }
+}
+
+/* Variante elegante */
+.typewriter-title.elegant {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+    .typewriter-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 968px) {
+    .typewriter-title {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* En móvil, el título ya ocupa su propia fila gracias al grid */
+    .page-title-header {
+        justify-content: center;
+        padding: 1rem 0.5rem;
+    }
+    
+    .typewriter-title {
+        font-size: 0.95rem;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .typewriter-title {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+    
+    .page-title-header {
+        padding: 0.8rem 0.5rem;
+    }
+}
+
+/* ============================================
+   COMPATIBILIDAD CON ACCESIBILIDAD
+   ============================================ */
+
+/* Alto contraste */
+html.contrast-high .typewriter-title {
+    color: #ffffff !important;
+    text-shadow: 2px 2px 4px #000000 !important;
+}
+
+html.contrast-high .typewriter-cursor {
+    color: #ffffff !important;
+}
+
+/* Pausar animaciones */
+html.pause-animations .typewriter-cursor {
+    animation: none !important;
+    opacity: 1 !important;
+}
+
+html.pause-animations .typewriter-title.gradient-text .typewriter-text {
+    animation: none !important;
+    background: white !important;
+    -webkit-text-fill-color: white !important;
+}
+
+html.pause-animations .typewriter-title.neon-text {
+    animation: none !important;
+}
+
+/* Modo de lectura - ocultar para no distraer */
+html.reading-mode .page-title-header {
+    opacity: 0.3;
+    filter: blur(2px);
+}
+
+/* ============================================
+   AJUSTES FINOS
+   ============================================ */
+
+/* Asegurar que el header tenga espacio suficiente */
+header {
+    min-height: 80px;
+}
+
+/* Centrado perfecto en desktop */
+@media (min-width: 769px) {
+    .header-container {
+        position: relative;
+    }
+    
+    .page-title-header {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none; /* No interferir con clics */
+    }
+    
+    .typewriter-title {
+        pointer-events: auto; /* Pero el texto sí puede ser seleccionable */
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .page-title-header {
+        background: none !important;
+        border: none !important;
+    }
+    
+    .typewriter-title {
+        color: black !important;
+        text-shadow: none !important;
+    }
+    
+    .typewriter-cursor {
+        display: none !important;
+    }
+}
+
+/* ============================================
+   ESTADOS ESPECIALES
+   ============================================ */
+
+/* Cuando el título está escribiendo */
+.typewriter-title.typing .typewriter-cursor {
+    animation: blink 0.5s step-end infinite;
+}
+
+/* Cuando el título terminó de escribir */
+.typewriter-title.typing-complete .typewriter-cursor {
+    animation: blink 1s step-end infinite;
+}
+
+/* Efecto hover sutil (solo desktop) */
+@media (min-width: 769px) {
+    .typewriter-title:hover {
+        transform: scale(1.02);
+        transition: transform 0.3s ease;
+    }
+}

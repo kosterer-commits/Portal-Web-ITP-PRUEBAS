@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingeniería Eléctrica</title>
+    
+    <!-- Accessibility Links -->
+    <link rel="stylesheet" href="assets/css/accessibility.css">
+    <link rel="stylesheet" href="assets/css/accessibility-functions.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;700&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Barlow', sans-serif;
+            background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Blueprint Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: gridScroll 60s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gridScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 40px; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Header */
+        .hero-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            margin-bottom: 60px;
+        }
+
+        .hero-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            background: linear-gradient(135deg, #ffd700 0%, #ffb300 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            font-weight: 900;
+            letter-spacing: 2px;
+            animation: titleReveal 1s ease-out backwards;
+        }
+
+        .hero-header p {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+            animation: subtitleReveal 1s 0.2s ease-out backwards;
+            letter-spacing: 1px;
+        }
+
+        .hero-header .tagline {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            max-width: 700px;
+            margin: 20px auto 0;
+            animation: descriptionReveal 1s 0.4s ease-out backwards;
+            font-style: italic;
+        }
+
+        @keyframes titleReveal {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes subtitleReveal {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes descriptionReveal {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section Styles */
+        section {
+            margin: 80px 0;
+            animation: sectionFade 1s ease-out;
+        }
+
+        @keyframes sectionFade {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: #ffd700;
+            margin-bottom: 30px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Objetivo Section */
+        .objetivo-box {
+            background: rgba(255, 215, 0, 0.08);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .objetivo-box:hover {
+            background: rgba(255, 215, 0, 0.12);
+            border-color: #ffd700;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.15);
+        }
+
+        .objetivo-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.15);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: #ffd700;
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+        }
+
+        .feature-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            color: #ffd700;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .feature-desc {
+            font-size: 0.95rem;
+            color: #a0a0a0;
+        }
+
+        /* Reticula Button Section */
+        .reticula-section {
+            margin: 100px 0 80px;
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 179, 0, 0.08) 100%);
+            border-radius: 20px;
+            border: 2px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .reticula-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .reticula-description {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Animated Reticula Button */
+        .reticula-btn {
+            display: inline-block;
+            position: relative;
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #0f0f0f;
+            background: linear-gradient(135deg, #ffd700 0%, #ffb300 100%);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .reticula-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .reticula-btn:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .reticula-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.6), 
+                        0 0 60px rgba(255, 179, 0, 0.4);
+            letter-spacing: 3px;
+        }
+
+        .reticula-btn span {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .reticula-btn-icon {
+            display: inline-block;
+            font-size: 1.3rem;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.15) rotate(10deg); }
+        }
+
+        /* Stats Bar - Simple */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+        }
+
+        .stat-item {
+            background: rgba(255, 215, 0, 0.05);
+            border: 2px solid rgba(255, 215, 0, 0.2);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: #ffd700;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffd700;
+            font-family: 'Orbitron', sans-serif;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 40px 15px;
+                margin-bottom: 40px;
+            }
+
+            .hero-header h1 {
+                font-size: clamp(2rem, 5vw, 3rem);
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .reticula-btn {
+                padding: 15px 40px;
+                font-size: 1rem;
+            }
+
+            .reticula-section {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .hero-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .reticula-btn {
+                padding: 12px 30px;
+                font-size: 0.95rem;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Header -->
+        <div class="hero-header">
+            <h1>Ingeniería Eléctrica</h1>
+            <p>Genera, Transmite y Transforma Energía para el Futuro</p>
+            <p class="tagline">Diseña sistemas eléctricos inteligentes que impulsan la transformación digital y sostenible</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">9</div>
+                <div class="stat-label">Semestres</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">256</div>
+                <div class="stat-label">Créditos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Licencia Profesional</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">6</div>
+                <div class="stat-label">Áreas de Especialidad</div>
+            </div>
+        </div>
+
+        <!-- Objetivo Section -->
+        <section class="objetivo-section">
+            <h2 class="section-title">Objetivo General</h2>
+            <div class="objetivo-box">
+                <p>Formar Ingenieros Electricistas altamente capacitados para diseñar, instalar, mantener y optimizar sistemas de generación, transmisión y distribución de energía eléctrica, contribuyendo a la sostenibilidad energética, la eficiencia operacional y la innovación tecnológica en sistemas de potencia.</p>
+            </div>
+        </section>
+
+        <!-- Perfil Section -->
+        <section class="perfil-section">
+            <h2 class="section-title">Perfil del Egresado</h2>
+            <p class="section-subtitle">El Ingeniero Electricista egresado será capaz de:</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-title">Sistemas de Potencia</div>
+                    <div class="feature-desc">Diseñar redes de generación, transmisión y distribución eléctrica</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <div class="feature-title">Máquinas Eléctricas</div>
+                    <div class="feature-desc">Operar y mantener motores, generadores y transformadores</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <div class="feature-title">Instalaciones Eléctricas</div>
+                    <div class="feature-desc">Proyectar sistemas de iluminación, control y automatización</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <div class="feature-title">Energías Renovables</div>
+                    <div class="feature-desc">Implementar sistemas solares, eólicos y energías limpias</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <div class="feature-title">Protecciones Eléctricas</div>
+                    <div class="feature-desc">Diseñar sistemas de protección y continuidad operacional</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <div class="feature-title">Eficiencia Energética</div>
+                    <div class="feature-desc">Optimizar consumo y reducir pérdidas en sistemas eléctricos</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reticula Section with Button -->
+        <section class="reticula-section">
+            <h2 class="reticula-title">Plan de Estudios Interactivo</h2>
+            <p class="reticula-description">Explora en detalle la estructura del programa, los cursos por semestre, créditos y requisitos para completar tu carrera profesional.</p>
+            
+            <a href="assets/src/retuculas/Electrica.html" class="reticula-btn">
+                <span>
+                    <span class="reticula-btn-icon">📚</span>
+                    Ver Reticula Completa
+                </span>
+            </a>
+        </section>
+
+        <!-- Areas de Desempeño -->
+        <section class="areas-section">
+            <h2 class="section-title">Áreas de Desempeño Profesional</h2>
+            <p class="section-subtitle">Nuestros egresados trabajan en diversos sectores de la industria eléctrica:</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏭</div>
+                    <div class="feature-title">Generación</div>
+                    <div class="feature-desc">Plantas térmicas, hidroeléctricas, eólicas y solares</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <div class="feature-title">Transmisión</div>
+                    <div class="feature-desc">Redes de alto voltaje y sistemas de distribución</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏢</div>
+                    <div class="feature-title">Sector Industrial</div>
+                    <div class="feature-desc">Industrias con sistemas eléctricos especializados</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏗️</div>
+                    <div class="feature-title">Infraestructura</div>
+                    <div class="feature-desc">Proyectos civiles con sistemas eléctricos integrados</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📡</div>
+                    <div class="feature-title">Telecomunicaciones</div>
+                    <div class="feature-desc">Sistemas de potencia para infraestructura digital</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <div class="feature-title">Consultoría</div>
+                    <div class="feature-desc">Diseño y auditoría de sistemas eléctricos</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="assets/js/header.js"></script>
+    <script>
+        // Initialize accessibility menu if available
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                if (typeof initializeAccessibilityMenu === 'function') {
+                    initializeAccessibilityMenu();
+                }
+            }, 300);
+        });
+    </script>
+</body>
+</html>
