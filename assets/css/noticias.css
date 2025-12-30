@@ -6,7 +6,7 @@
 /* Contenedor de la sección */
 .noticias-section {
     width: 100%;
-    background: var(--bg-light);
+    background: transparent;
     padding: var(--space-5xl) 0;
     margin: 0;
 }
@@ -17,6 +17,7 @@
     padding: 0 var(--space-xl);
 }
 
+
 /* Header de la sección */
 .noticias-header {
     text-align: center;
@@ -26,14 +27,14 @@
 .noticias-title {
     font-size: var(--font-4xl);
     font-weight: var(--font-weight-extrabold);
-    color: var(--text-primary);
+    color: white;
     margin: 0 0 var(--space-md) 0;
     letter-spacing: -0.5px;
 }
 
 .noticias-subtitle {
     font-size: var(--font-lg);
-    color: var(--text-secondary);
+    color: white;
     margin: 0;
     max-width: 600px;
     margin-left: auto;

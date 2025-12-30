@@ -61,7 +61,7 @@ class NoticiasSection {
     }
     
     setupIntersectionObserver() {
-        // Cargar imágenes cuando entran en viewport
+        // Cargar imágenes y animar entrada cuando entran en viewport
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -69,15 +69,37 @@ class NoticiasSection {
                     if (img && img.dataset.src) {
                         img.src = img.dataset.src;
                         img.removeAttribute('data-src');
-                        observer.unobserve(entry.target);
                     }
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, {
-            rootMargin: '50px'
+            rootMargin: '50px',
+            threshold: 0.1
         });
-        
+
         this.cards.forEach(card => observer.observe(card));
+    }
+
+    setupFilters() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const cards = document.querySelectorAll('.noticia-card');
+                cards.forEach(card => {
+                    const category = card.querySelector('.noticia-category').textContent.toLowerCase();
+                    if (filter === 'all' || category.includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
     }
 }
 

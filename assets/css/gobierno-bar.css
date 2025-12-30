@@ -1,0 +1,69 @@
+/* Barra de Gobierno - Identidad Gob.mx */
+
+.gobierno-bar {
+    background-color: #611232; /* Color vino oficial */
+    width: 100%;
+    position: relative;
+    z-index: 1000;
+}
+
+.gobierno-bar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gobierno-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.gobierno-logo img {
+    height: 32px;
+    width: auto;
+}
+
+.gobierno-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.gobierno-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: 'Montserrat', Arial, sans-serif;
+    transition: opacity 0.3s ease;
+}
+
+.gobierno-links a:hover {
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gobierno-bar-container {
+        flex-direction: column;
+        padding: 8px 15px;
+        gap: 8px;
+    }
+
+    .gobierno-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .gobierno-links a {
+        font-size: 12px;
+    }
+
+    .gobierno-logo img {
+        height: 28px;
+    }
+}

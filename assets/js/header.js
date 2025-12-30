@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Cargar noticias destacadas
             loadNoticias();
+
+            // Cargar seccion de redes sociales
+            loadRedesSociales();
             
             // Cargar programas académicos y servicios
             loadProgramasYServicios();
@@ -103,95 +106,83 @@ function loadCarouselV2() {
 // Función para cargar el sistema de títulos
 // Función para inicializar el menú (se ejecuta después de cargar el HTML)
 function initializeMenu() {
-    // Toggle menú móvil
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
-    const mainMenu = document.querySelector('.main-menu');
-    const menuButton = document.querySelector('.menu-button');
 
-    // Verificar que los elementos existan
     if (!hamburger || !nav) {
-        console.error('No se encontraron los elementos del menú');
+        console.error('No se encontraron los elementos del menú: hamburguesa o navegación.');
         return;
     }
 
-    console.log('Menú inicializado correctamente');
-
-    // Toggle hamburguesa (abrir/cerrar menú lateral en móvil)
-    hamburger.addEventListener('click', (e) => {
+    // 1. Toggle para abrir/cerrar el menú lateral en móvil
+    hamburger.addEventListener('click', function(e) {
         e.stopPropagation();
-        hamburger.classList.toggle('active');
+        this.classList.toggle('active');
         nav.classList.toggle('active');
-        
-        // En móvil, abrir automáticamente el mega menú
-        if (window.innerWidth <= 768 && mainMenu) {
-            if (nav.classList.contains('active')) {
-                mainMenu.classList.add('active');
-            } else {
-                mainMenu.classList.remove('active');
+    });
+
+    // 2. Lógica para el mega-menú dentro del panel móvil
+    const menuButton = nav.querySelector('.menu-button');
+    const megaMenu = nav.querySelector('.mega-menu');
+
+    if (menuButton && megaMenu) {
+        const mainMenuContainer = menuButton.parentElement; // El <li> que contiene el botón y el mega-menú
+
+        menuButton.addEventListener('click', function(e) {
+            // En pantallas móviles, el click expande/contrae el mega-menú
+            if (window.innerWidth <= 768) {
+                e.preventDefault(); // Prevenir navegación en el ancla '#'
+                mainMenuContainer.classList.toggle('active');
             }
-        }
-        
-        // Animar hamburguesa
-        if (hamburger.classList.contains('active')) {
-            hamburger.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-            hamburger.children[1].style.opacity = '0';
-            hamburger.children[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
-        } else {
-            hamburger.children[0].style.transform = '';
-            hamburger.children[1].style.opacity = '';
-            hamburger.children[2].style.transform = '';
+        });
+    }
+
+    // 3. Cerrar el menú si se hace clic fuera de él (en el overlay o en el contenido)
+    document.addEventListener('click', function(e) {
+        // Si el menú está activo y el clic fue fuera de la navegación
+        if (nav.classList.contains('active') && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+            hamburger.classList.remove('active');
+            nav.classList.remove('active');
+            // También cerramos el submenú si está abierto
+            const activeSubMenu = nav.querySelector('.main-menu.active');
+            if (activeSubMenu) {
+                activeSubMenu.classList.remove('active');
+            }
         }
     });
 
-    // Cerrar menú al hacer clic en un enlace del mega menú
-    const menuLinks = document.querySelectorAll('.menu-section a');
-    menuLinks.forEach(link => {
-        link.addEventListener('click', () => {
+    // 4. Cerrar el menú al hacer clic en un enlace de navegación final
+    const navLinks = nav.querySelectorAll('.menu-section a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
             if (window.innerWidth <= 768) {
                 hamburger.classList.remove('active');
                 nav.classList.remove('active');
-                mainMenu.classList.remove('active');
-                
-                // Resetear hamburguesa
-                hamburger.children[0].style.transform = '';
-                hamburger.children[1].style.opacity = '';
-                hamburger.children[2].style.transform = '';
+                const activeSubMenu = nav.querySelector('.main-menu.active');
+                if (activeSubMenu) {
+                    activeSubMenu.classList.remove('active');
+                }
             }
         });
     });
 
-    // Cerrar menú al hacer clic fuera de él
-    document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
-            hamburger.classList.remove('active');
-            nav.classList.remove('active');
-            if (mainMenu) {
-                mainMenu.classList.remove('active');
+    // 5. Resetear el estado del menú si se redimensiona la ventana a escritorio
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 968) { // Usamos 968px como punto de quiebre donde desaparece el menú hamburguesa
+            if (hamburger.classList.contains('active')) {
+                hamburger.classList.remove('active');
             }
-            
-            // Resetear hamburguesa
-            hamburger.children[0].style.transform = '';
-            hamburger.children[1].style.opacity = '';
-            hamburger.children[2].style.transform = '';
+            if (nav.classList.contains('active')) {
+                nav.classList.remove('active');
+            }
+            const activeSubMenu = nav.querySelector('.main-menu.active');
+            if (activeSubMenu) {
+                activeSubMenu.classList.remove('active');
+            }
         }
     });
 
-    // Ajustar menú al redimensionar ventana
-    window.addEventListener('resize', () => {
-        if (window.innerWidth > 768) {
-            hamburger.classList.remove('active');
-            nav.classList.remove('active');
-            if (mainMenu) {
-                mainMenu.classList.remove('active');
-            }
-            
-            // Resetear hamburguesa
-            hamburger.children[0].style.transform = '';
-            hamburger.children[1].style.opacity = '';
-            hamburger.children[2].style.transform = '';
-        }
-    });
+    console.log('Menú inicializado correctamente con la nueva lógica.');
 }
 
 // ============================================
@@ -888,6 +879,42 @@ function loadNoticias() {
         })
         .catch(error => {
             console.error('Error al cargar noticias:', error);
+        });
+}
+
+// Función para cargar la sección de redes sociales
+function loadRedesSociales() {
+    const redesPath = 'assets/src/redes-sociales.html';
+    const placeholder = document.getElementById('redes-sociales-placeholder');
+
+    if (!placeholder) {
+        console.warn('No se encontró el placeholder de redes sociales');
+        return;
+    }
+
+    fetch(redesPath)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(htmlContent => {
+            placeholder.innerHTML = htmlContent;
+
+            // Animaciones de entrada stagger
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.social-card');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0) rotateX(0deg)';
+                    }, index * 200);
+                });
+            }, 100);
+        })
+        .catch(error => {
+            console.error('Error al cargar la sección de redes sociales:', error);
         });
 }
 

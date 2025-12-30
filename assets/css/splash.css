@@ -1,0 +1,170 @@
+/* ============================================
+    SPLASH SCREEN - ANIMACIÓN DE CORTINA/TEATRO
+    ============================================ */
+
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f1e 100%);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.splash-curtain-left, .splash-curtain-right {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #8b0000 0%, #b22222 50%, #dc143c 100%);
+    transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+}
+
+.splash-curtain-left {
+    left: 0;
+    transform: translateX(0);
+}
+
+.splash-curtain-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.splash-curtain-left.open {
+    transform: translateX(-100%);
+}
+
+.splash-curtain-right.open {
+    transform: translateX(100%);
+}
+
+.splash-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all 0.8s ease 0.5s;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.splash-content.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.splash-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.splash-logo-tec, .splash-logo-tecnm {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255,255,255,0.2);
+    transition: all 0.5s ease;
+}
+
+.splash-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 20px 0 10px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.splash-subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 10px 0 20px;
+    color: #e9ecef;
+}
+
+.splash-slogan {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 20px 0;
+    color: #00d4ff;
+    font-weight: 300;
+}
+
+/* Animaciones */
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(2deg); }
+    75% { transform: translateY(-5px) rotate(-2deg); }
+}
+
+@keyframes textGlow {
+    from {
+        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        transform: scale(1);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 30px rgba(0,212,255,0.5), 0 0 40px rgba(0,212,255,0.3);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: scale(1); }
+    to { opacity: 0; transform: scale(1.1); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .splash-logos {
+        gap: 20px;
+    }
+
+    .splash-logo-tec, .splash-logo-tecnm {
+        width: 80px;
+        height: 80px;
+    }
+
+    .splash-title {
+        font-size: 2rem;
+    }
+
+    .splash-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .splash-slogan {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .splash-logos {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .splash-title {
+        font-size: 1.8rem;
+    }
+
+    .splash-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .splash-slogan {
+        font-size: 0.9rem;
+    }
+}

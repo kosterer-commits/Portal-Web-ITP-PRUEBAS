@@ -1,7 +1,7 @@
 /* ===== PROGRAMAS ACADÉMICOS ===== */
 .programas-section {
     padding: var(--space-5xl) 0;
-    background: var(--bg-light);
+    background: transparent
 }
 
 .programas-container {
@@ -62,64 +62,88 @@
 /* Grid de Programas */
 .programas-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: 1fr; /* 1 columna por defecto para móvil */
     gap: var(--space-xl);
-    margin-top: var(--space-5xl);
 }
 
 .programa-card {
-    background: white;
+    position: relative;
+    background-size: cover;
+    background-position: center;
     border-radius: var(--radius-lg);
-    padding: var(--space-xl);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-normal);
+    overflow: hidden;
+    min-height: 340px; /* Aumentamos la altura para la nueva proporción */
+    padding: var(--space-lg);
+    color: white;
     display: flex;
     flex-direction: column;
-    border-top: 4px solid var(--primary-main);
+    justify-content: flex-end; /* Alinea el contenido hacia abajo */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.programa-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.1) 60%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+    transition: background 0.4s ease;
 }
 
 .programa-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-    border-top-color: var(--secondary-cyan);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+.programa-card:hover::before {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.2) 100%);
+}
+
+.programa-header,
+.programa-nombre,
+.programa-duracion,
+.programa-descripcion,
+.programa-btn {
+    position: relative;
+    z-index: 2;
 }
 
 .programa-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end; /* Mueve el badge a la derecha */
     align-items: flex-start;
-    margin-bottom: var(--space-lg);
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-lg);
+    left: var(--space-lg);
 }
 
 .programa-icon {
-    font-size: 3rem;
-    line-height: 1;
+    display: none; /* Ocultamos el ícono emoji */
 }
 
 .programa-badge {
     display: inline-block;
     padding: var(--space-xs) var(--space-sm);
-    background: var(--primary-main);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
     color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: var(--radius-sm);
     font-size: var(--font-xs);
     font-weight: var(--font-weight-semibold);
     text-transform: uppercase;
 }
 
-.programa-badge.online-badge {
-    background: var(--secondary-cyan);
-}
-
-.programa-badge.posgrado-badge {
-    background: #9C27B0;
-}
-
 .programa-nombre {
-    font-size: var(--font-xl);
+    font-size: var(--font-xl); /* Reducido para mejor ajuste */
     font-weight: var(--font-weight-bold);
-    color: var(--primary-dark);
+    color: white;
     margin-bottom: var(--space-sm);
+    text-shadow: 0 2px 5px rgba(0,0,0,0.5);
 }
 
 .programa-duracion {
@@ -127,14 +151,14 @@
     color: var(--secondary-cyan);
     font-weight: var(--font-weight-semibold);
     margin-bottom: var(--space-md);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
 }
 
 .programa-descripcion {
-    font-size: var(--font-base);
-    color: var(--text-secondary);
+    font-size: 0.875rem; /* Ligeramente más pequeño */
+    color: #e2e8f0; /* Un blanco más suave */
     line-height: var(--line-height-relaxed);
     margin-bottom: var(--space-lg);
-    flex-grow: 1;
 }
 
 .programa-btn {
@@ -163,16 +187,15 @@
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
+@media (min-width: 768px) {
     .programas-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas para tabletas */
     }
 }
 
-@media (max-width: 992px) {
+@media (min-width: 992px) {
     .programas-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--space-lg);
+        grid-template-columns: repeat(3, 1fr); /* 3 columnas para escritorio */
     }
     
     .programas-title {
@@ -183,11 +206,6 @@
 @media (max-width: 768px) {
     .programas-section {
         padding: var(--space-4xl) 0;
-    }
-    
-    .programas-grid {
-        grid-template-columns: 1fr;
-        gap: var(--space-lg);
     }
     
     .programas-subtitle {
@@ -203,7 +221,7 @@
 /* ===== SERVICIOS PARA ESTUDIANTES ===== */
 .servicios-section {
     padding: var(--space-5xl) 0;
-    background: white;
+    background: transparent;
 }
 
 .servicios-container {

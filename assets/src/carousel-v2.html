@@ -1,306 +1,52 @@
 <!-- ============================================
-     CARRUSEL V2 - DISEÑO MODERNO COMPLETO
+     CARRUSEL V2 - VERSIÓN SIMPLIFICADA
+     Para agregar/quitar banners, edita el array en carousel-v2.js
      ============================================ -->
 
-<section class="modern-carousel">
-    <!-- Logos decorativos -->
-    <img src="images/logos/TECNM-logo-solo.png" alt="Logo tecnm-solo" class="logo-TECNM-solo" />
-    <img src="images/iconos/reloj-pach.png" alt="relojpach" class="reloj-pach" />
+<section class="modern-carousel" role="region" aria-label="Carrusel de banners principales">
     
+
     <div class="carousel-v2-wrapper">
         <div class="carousel-v2-main">
-            
-            <!-- ============================================
-                 BANNER FULL WIDTH
-                 ============================================ -->
+
+            <!-- Banner área -->
             <div class="carousel-v2-banner-area">
                 <div class="carousel-v2-slides">
-                    
-                    <!-- Slide 1 -->
-                    <div class="carousel-v2-slide active" data-slide="0">
-                        <img src="images/banners/Reinscripcion Ene-Jun 2026.jpeg" 
-                             alt="REINSCRIPCION 2026" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 2 -->
-                    <div class="carousel-v2-slide" data-slide="1">
-                        <img src="images/banners/CONVOCATORIA 2025 - 2026 (8) Limpieza .png" 
-                             alt="Servicio de Limpieza" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 3 -->
-                    <div class="carousel-v2-slide" data-slide="2">
-                        <img src="images/banners/CONVOCATORIA VIGILANCIA .png" 
-                             alt="Vigilancia y Seguridad" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 4 -->
-                    <div class="carousel-v2-slide" data-slide="3">
-                        <img src="images/banners/CONVOCATORIA 2025 - 2026 (7).png" 
-                             alt="EGEL 2026" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 5 -->
-                    <div class="carousel-v2-slide" data-slide="4">
-                        <img src="images/banners/Calendario Ene - Jun 2026.png" 
-                             alt="Calendario Escolar" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 6 -->
-                    <div class="carousel-v2-slide" data-slide="5">
-                        <img src="images/banners/BANNER DOCTORADO.png" 
-                             alt="Admisión Doctorado" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 7 -->
-                    <div class="carousel-v2-slide" data-slide="6">
-                        <img src="images/banners/banner de equivalencias-01.png" 
-                             alt="Equivalencias" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 8 -->
-                    <div class="carousel-v2-slide" data-slide="7">
-                        <img src="images/banners/BANNER AÑO SABATICO.png" 
-                             alt="Año Sabático" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 9 -->
-                    <div class="carousel-v2-slide" data-slide="8">
-                        <img src="images/banners/banner de admisión-01.png" 
-                             alt="Admisión 2026" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
-                    <!-- Slide 10 -->
-                    <div class="carousel-v2-slide" data-slide="9">
-                        <img src="images/banners/Division de estudios profesionales.png" 
-                             alt="División de Estudios" 
-                             class="carousel-v2-banner-img lazyload">
-                    </div>
-                    
+                    <!-- Los slides se generan dinámicamente por JavaScript -->
                 </div>
             </div>
-            
-            <!-- ============================================
-                 CONTENEDOR INFO + CONTROLES
-                 ============================================ -->
+
+            <!-- Contenedor info + controles -->
             <div class="carousel-v2-bottom-section">
                 <div class="carousel-v2-info-area">
-                    
-                    <!-- IZQUIERDA: Información -->
+
+                    <!-- Información (generada dinámicamente) -->
                     <div class="carousel-v2-info-wrapper">
-                        
-                        <!-- Info Slide 1 -->
-                        <div class="carousel-v2-info active" data-info="0">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Convocatoria</span>
-                                <h2 class="carousel-v2-title">Reinscripción Enero-Junio 2026</h2>
-                                <p class="carousel-v2-description">
-                                    Consulta la convocatoria completa para el proceso de reinscripción del semestre Enero-Junio 2026.
-                                </p>
-                                <a href="pdf/CONVOCATORIA ENERO - JUNIO 2026.pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver convocatoria</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 2 -->
-                        <div class="carousel-v2-info" data-info="1">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Licitación</span>
-                                <h2 class="carousel-v2-title">Servicio de Limpieza 2025</h2>
-                                <p class="carousel-v2-description">
-                                    Convocatoria abierta para la contratación de servicio de limpieza en las instalaciones del Instituto.
-                                </p>
-                                <a href="pdf/CONVOCATORIA ABIERTA SERVICIO DE LIMPIEZA No.ITP-DRMS-SL-001-2025  (1).pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver documento</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 3 -->
-                        <div class="carousel-v2-info" data-info="2">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Licitación</span>
-                                <h2 class="carousel-v2-title">Vigilancia y Seguridad</h2>
-                                <p class="carousel-v2-description">
-                                    Convocatoria para contratación de servicio de vigilancia y seguridad privada en el campus.
-                                </p>
-                                <a href="pdf/CONVOCATORIA ABIERTA SERVICIO DE VIGILANCIA Y SEGURIDADNo.ITP-DRMS-SV-001-2025.pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver documento</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 4 -->
-                        <div class="carousel-v2-info" data-info="3">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Examen</span>
-                                <h2 class="carousel-v2-title">Convocatoria EGEL Marzo 2026</h2>
-                                <p class="carousel-v2-description">
-                                    Inscríbete al Examen General de Egreso de Licenciatura aplicación Marzo 2026.
-                                </p>
-                                <a href="pdf/CONVOCATORIA EGEL 2026 (1).pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver convocatoria</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 5 -->
-                        <div class="carousel-v2-info" data-info="4">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Calendario</span>
-                                <h2 class="carousel-v2-title">Calendario Escolar Ene-Jun 2026</h2>
-                                <p class="carousel-v2-description">
-                                    Consulta el calendario oficial del semestre Enero-Junio 2026 con fechas importantes.
-                                </p>
-                                <a href="pdf/Calendario ENERO - JUNIO 2026.2.pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver calendario</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 6 -->
-                        <div class="carousel-v2-info" data-info="5">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Posgrado</span>
-                                <h2 class="carousel-v2-title">Admisión Doctorado 2026</h2>
-                                <p class="carousel-v2-description">
-                                    Convocatoria de admisión al programa de Doctorado para el semestre Enero-Junio 2026.
-                                </p>
-                                <a href="pdf/Convocatoria doctorado 1.2.pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver convocatoria</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 7 -->
-                        <div class="carousel-v2-info" data-info="6">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Trámite</span>
-                                <h2 class="carousel-v2-title">Equivalencias Septiembre 2025</h2>
-                                <p class="carousel-v2-description">
-                                    Consulta la convocatoria y formatos para solicitud de equivalencias.
-                                </p>
-                                <a href="#" class="carousel-v2-btn" onclick="openEquivalenciasModal(event)">
-                                    <span>Ver información</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 8 -->
-                        <div class="carousel-v2-info" data-info="7">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Convocatoria</span>
-                                <h2 class="carousel-v2-title">Año Sabático 1-2026</h2>
-                                <p class="carousel-v2-description">
-                                    Convocatoria para solicitud de año sabático período 1-2026 para docentes.
-                                </p>
-                                <a href="pdf/CONVOCATORIA PERIODO SABATICO 1-2026.pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver convocatoria</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 9 -->
-                        <div class="carousel-v2-info" data-info="8">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Nuevo Ingreso</span>
-                                <h2 class="carousel-v2-title">Convocatoria Admisión 2026</h2>
-                                <p class="carousel-v2-description">
-                                    Proceso de admisión para nuevo ingreso al semestre Enero-Junio 2026.
-                                </p>
-                                <a href="pdf/ConvocatoriaAdmisiónEJ2026-b.pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver convocatoria</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <!-- Info Slide 10 -->
-                        <div class="carousel-v2-info" data-info="9">
-                            <div class="carousel-v2-info-content">
-                                <span class="carousel-v2-tag">Información</span>
-                                <h2 class="carousel-v2-title">División de Estudios Profesionales</h2>
-                                <p class="carousel-v2-description">
-                                    Conoce los servicios y programas de la División de Estudios Profesionales.
-                                </p>
-                                <a href="pdf/División de Estudios.pdf" class="carousel-v2-btn" target="_blank">
-                                    <span>Ver más</span>
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                        
+                        <!-- Las infos se generan dinámicamente por JavaScript -->
                     </div>
-                    
-                    <!-- DERECHA: Controles -->
+
+                    <!-- Controles -->
                     <div class="carousel-v2-controls">
-                        
+
                         <!-- Flecha anterior -->
                         <button class="carousel-v2-arrow carousel-v2-arrow--prev" aria-label="Anterior">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M15 18l-6-6 6-6"/>
                             </svg>
                         </button>
-                        
-                        <!-- Indicadores -->
+
+                        <!-- Indicadores (generados dinámicamente) -->
                         <div class="carousel-v2-indicators">
-                            <button class="carousel-v2-dot active" data-slide="0" aria-label="Slide 1"></button>
-                            <button class="carousel-v2-dot" data-slide="1" aria-label="Slide 2"></button>
-                            <button class="carousel-v2-dot" data-slide="2" aria-label="Slide 3"></button>
-                            <button class="carousel-v2-dot" data-slide="3" aria-label="Slide 4"></button>
-                            <button class="carousel-v2-dot" data-slide="4" aria-label="Slide 5"></button>
-                            <button class="carousel-v2-dot" data-slide="5" aria-label="Slide 6"></button>
-                            <button class="carousel-v2-dot" data-slide="6" aria-label="Slide 7"></button>
-                            <button class="carousel-v2-dot" data-slide="7" aria-label="Slide 8"></button>
-                            <button class="carousel-v2-dot" data-slide="8" aria-label="Slide 9"></button>
-                            <button class="carousel-v2-dot" data-slide="9" aria-label="Slide 10"></button>
+                            <!-- Los dots se generan dinámicamente por JavaScript -->
                         </div>
-                        
+
                         <!-- Flecha siguiente -->
                         <button class="carousel-v2-arrow carousel-v2-arrow--next" aria-label="Siguiente">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M9 18l6-6-6-6"/>
                             </svg>
                         </button>
-                        
+
                         <!-- Botón catálogo -->
                         <button class="carousel-v2-catalog-btn">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -311,119 +57,37 @@
                             </svg>
                             <span>Catálogo</span>
                         </button>
-                        
+
                     </div>
-                    
+
                 </div>
             </div>
-            
+
         </div>
     </div>
-    
-    <!-- ============================================
-         MODAL CATÁLOGO
-         ============================================ -->
+
+    <!-- Modal catálogo -->
     <div class="carousel-v2-modal">
         <div class="carousel-v2-modal-overlay"></div>
         <div class="carousel-v2-modal-content">
-            
+
             <!-- Header -->
             <div class="carousel-v2-modal-header">
                 <h3 class="carousel-v2-modal-title">Catálogo de Banners</h3>
                 <button class="carousel-v2-modal-close" aria-label="Cerrar">×</button>
             </div>
-            
-            <!-- Grid de thumbnails -->
+
+            <!-- Grid de thumbnails (generado dinámicamente) -->
             <div class="carousel-v2-modal-grid">
-                
-                <div class="carousel-v2-thumb active" data-slide="0">
-                    <img src="images/banners/Reinscripcion Ene-Jun 2026.jpeg" alt="Banner 1">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Convocatoria</p>
-                        <h4 class="carousel-v2-thumb-title">Reinscripción 2026</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="1">
-                    <img src="images/banners/CONVOCATORIA 2025 - 2026 (8) Limpieza .png" alt="Banner 2">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Licitación</p>
-                        <h4 class="carousel-v2-thumb-title">Servicio de Limpieza</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="2">
-                    <img src="images/banners/CONVOCATORIA VIGILANCIA .png" alt="Banner 3">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Licitación</p>
-                        <h4 class="carousel-v2-thumb-title">Vigilancia y Seguridad</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="3">
-                    <img src="images/banners/CONVOCATORIA 2025 - 2026 (7).png" alt="Banner 4">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Examen</p>
-                        <h4 class="carousel-v2-thumb-title">EGEL Marzo 2026</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="4">
-                    <img src="images/banners/Calendario Ene - Jun 2026.png" alt="Banner 5">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Calendario</p>
-                        <h4 class="carousel-v2-thumb-title">Calendario Escolar 2026</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="5">
-                    <img src="images/banners/BANNER DOCTORADO.png" alt="Banner 6">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Posgrado</p>
-                        <h4 class="carousel-v2-thumb-title">Admisión Doctorado</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="6">
-                    <img src="images/banners/banner de equivalencias-01.png" alt="Banner 7">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Trámite</p>
-                        <h4 class="carousel-v2-thumb-title">Equivalencias</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="7">
-                    <img src="images/banners/BANNER AÑO SABATICO.png" alt="Banner 8">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Convocatoria</p>
-                        <h4 class="carousel-v2-thumb-title">Año Sabático 2026</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="8">
-                    <img src="images/banners/banner de admisión-01.png" alt="Banner 9">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Nuevo Ingreso</p>
-                        <h4 class="carousel-v2-thumb-title">Admisión 2026</h4>
-                    </div>
-                </div>
-                
-                <div class="carousel-v2-thumb" data-slide="9">
-                    <img src="images/banners/Division de estudios profesionales.png" alt="Banner 10">
-                    <div class="carousel-v2-thumb-overlay">
-                        <p class="carousel-v2-thumb-tag">Información</p>
-                        <h4 class="carousel-v2-thumb-title">División de Estudios</h4>
-                    </div>
-                </div>
-                
+                <!-- Los thumbnails se generan dinámicamente por JavaScript -->
             </div>
-            
+
         </div>
     </div>
-    
+
 </section>
 
-<!-- Modal de equivalencias (mantener del código original) -->
+<!-- Modal de equivalencias -->
 <div id="equivalencias-modal" class="equivalencias-modal">
     <div class="equivalencias-modal-content">
         <span class="equivalencias-close" onclick="closeEquivalenciasModal()">&times;</span>
@@ -440,7 +104,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="carousel-v2-final.js"></script>
+<script src="assets/js/carousel-v2.js"></script>
 
 <!-- Estilos del modal de equivalencias -->
 <style>
