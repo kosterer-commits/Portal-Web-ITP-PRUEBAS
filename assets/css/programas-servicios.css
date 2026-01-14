@@ -37,7 +37,7 @@
 .filter-btn {
     padding: var(--space-sm) var(--space-lg);
     border: 2px solid var(--gray-300);
-    background: transparent;
+    background: #dce0e1c9;
     color: var(--text-primary);
     border-radius: var(--radius-md);
     font-size: var(--font-base);

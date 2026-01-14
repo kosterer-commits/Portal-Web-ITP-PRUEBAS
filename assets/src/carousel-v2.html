@@ -7,62 +7,60 @@
     
 
     <div class="carousel-v2-wrapper">
-        <div class="carousel-v2-main">
-
-            <!-- Banner área -->
+        <!-- Contenedor independiente para banners -->
+        <div class="carousel-v2-banner-container">
             <div class="carousel-v2-banner-area">
                 <div class="carousel-v2-slides">
                     <!-- Los slides se generan dinámicamente por JavaScript -->
                 </div>
             </div>
+        </div>
 
-            <!-- Contenedor info + controles -->
-            <div class="carousel-v2-bottom-section">
-                <div class="carousel-v2-info-area">
+        <!-- Contenedor independiente para info y controles -->
+        <div class="carousel-v2-info-container">
+            <div class="carousel-v2-info-area">
 
-                    <!-- Información (generada dinámicamente) -->
-                    <div class="carousel-v2-info-wrapper">
-                        <!-- Las infos se generan dinámicamente por JavaScript -->
+                <!-- Información (generada dinámicamente) -->
+                <div class="carousel-v2-info-wrapper">
+                    <!-- Las infos se generan dinámicamente por JavaScript -->
+                </div>
+
+                <!-- Controles -->
+                <div class="carousel-v2-controls">
+
+                    <!-- Flecha anterior -->
+                    <button class="carousel-v2-arrow carousel-v2-arrow--prev" aria-label="Anterior">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+
+                    <!-- Indicadores (generados dinámicamente) -->
+                    <div class="carousel-v2-indicators">
+                        <!-- Los dots se generan dinámicamente por JavaScript -->
                     </div>
 
-                    <!-- Controles -->
-                    <div class="carousel-v2-controls">
+                    <!-- Flecha siguiente -->
+                    <button class="carousel-v2-arrow carousel-v2-arrow--next" aria-label="Siguiente">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
 
-                        <!-- Flecha anterior -->
-                        <button class="carousel-v2-arrow carousel-v2-arrow--prev" aria-label="Anterior">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M15 18l-6-6 6-6"/>
-                            </svg>
-                        </button>
-
-                        <!-- Indicadores (generados dinámicamente) -->
-                        <div class="carousel-v2-indicators">
-                            <!-- Los dots se generan dinámicamente por JavaScript -->
-                        </div>
-
-                        <!-- Flecha siguiente -->
-                        <button class="carousel-v2-arrow carousel-v2-arrow--next" aria-label="Siguiente">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 18l6-6-6-6"/>
-                            </svg>
-                        </button>
-
-                        <!-- Botón catálogo -->
-                        <button class="carousel-v2-catalog-btn">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="7" height="7"/>
-                                <rect x="14" y="3" width="7" height="7"/>
-                                <rect x="14" y="14" width="7" height="7"/>
-                                <rect x="3" y="14" width="7" height="7"/>
-                            </svg>
-                            <span>Catálogo</span>
-                        </button>
-
-                    </div>
+                    <!-- Botón catálogo -->
+                    <button class="carousel-v2-catalog-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="7" height="7"/>
+                            <rect x="14" y="3" width="7" height="7"/>
+                            <rect x="14" y="14" width="7" height="7"/>
+                            <rect x="3" y="14" width="7" height="7"/>
+                        </svg>
+                        <span>Catálogo</span>
+                    </button>
 
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 

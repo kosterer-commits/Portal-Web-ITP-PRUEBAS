@@ -55,13 +55,36 @@
     overflow: hidden;
 }
 
-.social-card:hover {
-    transform: 
+.social-card:hover, .social-card:active {
+    transform:
         translateY(-18px)
         rotateX(5deg)
         rotateY(7deg)
         scale(1.06);
     box-shadow: 0 35px 80px rgba(0, 0, 0, 0.16);
+}
+
+.social-card.facebook:hover, .social-card.facebook:active {
+    background: #1877f2;
+}
+
+.social-card.instagram:hover, .social-card.instagram:active {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.social-card.twitter:hover, .social-card.twitter:active {
+    background: #000000;
+}
+
+.social-card.tiktok:hover, .social-card.tiktok:active {
+    background: #000000;
+}
+
+.social-card:hover .social-title,
+.social-card:hover .social-description,
+.social-card:active .social-title,
+.social-card:active .social-description {
+    color: white;
 }
 
 /* Iconos más grandes y animados */

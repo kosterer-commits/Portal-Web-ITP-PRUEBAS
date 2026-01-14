@@ -58,15 +58,32 @@
 }
 
 /* ============================================
-   CONTENEDOR PRINCIPAL
-   ============================================ */
+    CONTENEDORES SEPARADOS
+    ============================================ */
 
-.carousel-v2-main {
+.carousel-v2-wrapper {
+    max-width: 80%;
+    margin: 0 auto;
     position: relative;
-    width: 100%;
-    height: auto;
+    z-index: 1;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
     display: flex;
     flex-direction: column;
+}
+
+.carousel-v2-banner-container {
+    position: relative;
+    width: 100%;
+    background: transparent;
+}
+
+.carousel-v2-info-container {
+    position: relative;
+    width: 100%;
     background: transparent;
 }
 
@@ -77,7 +94,7 @@
 .carousel-v2-banner-area {
     position: relative;
     width: 100%;
-    height: 600px;
+    height: 404px;
     overflow: hidden;
     background: transparent;
     flex-shrink: 0;
@@ -88,6 +105,10 @@
     position: relative;
     width: 100%;
     height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: #f9f9f900;
+    overflow: hidden;
 }
 
 .carousel-v2-slide {
@@ -112,7 +133,7 @@
     height: 100%;
     object-fit: fill;
     object-position: center;
-    background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+    background: transparent;
     position: relative;
 }
 
@@ -123,7 +144,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
     z-index: 1;
     pointer-events: none;
 }
@@ -140,15 +161,8 @@
 }
 
 /* ============================================
-   CONTENEDOR ÚNICO - INFO + CONTROLES
-   ============================================ */
-
-.carousel-v2-bottom-section {
-    width: 100%;
-    background: transparent;
-    position: relative;
-    /* Ya no es flex, solo un contenedor */
-}
+    CONTENEDOR DE INFO Y CONTROLES
+    ============================================ */
 
 /* ============================================
    ÁREA ÚNICA - INFO A LA IZQUIERDA, CONTROLES A LA DERECHA
@@ -640,8 +654,12 @@
 }
 
 @media (max-width: 768px) {
+    .carousel-v2-wrapper {
+        max-width: 100%;
+    }
+
     .carousel-v2-banner-area {
-        height: 350px;
+        height: 300px;
     }
 
     /* Logos decorativos en móvil */
@@ -716,7 +734,7 @@
 
 @media (max-width: 576px) {
     .carousel-v2-banner-area {
-        height: 300px;
+        height: 250px;
     }
     
     .carousel-v2-info-area {
@@ -764,7 +782,7 @@
 
 @media (max-width: 360px) {
     .carousel-v2-banner-area {
-        height: 280px;
+        height: 200px;
     }
     
     .carousel-v2-title {
