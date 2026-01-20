@@ -1,0 +1,134 @@
+/* Tecnologico Section */
+.tecnologico-section {
+    width: 100%;
+    background: transparent;
+    padding: var(--space-5xl, 5rem) 0;
+    margin: 0;
+    border: none;
+}
+
+.tecnologico-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-xl, 2rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4xl, 3rem);
+}
+
+/* Header styles handled by itp-header-block */
+
+.video-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    border-radius: var(--radius-xl, 16px);
+    overflow: hidden;
+    /* Remove shadow/background to allow transparency to show through */
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+}
+
+/* Aspect ratio handling - removed to let canvas size dictate or controlled via JS for canvas */
+/* We keep a container stricture but we need the CANVAS to be the visible element */
+
+.video-player {
+    display: none;
+    /* Hide the original video element */
+}
+
+.video-gif {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Optional: Filter for shadow if the GIF is transparent, though standard GIFs have binary transparency */
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+}
+
+/* Button Overlay */
+.btn-overlay-video {
+    position: absolute;
+    bottom: 42%;
+    /* INCREASE THIS VALUE to move up, DECREASE to move down */
+    left: 11%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.6);
+    z-index: 10;
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, -10px);
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Decoration */
+.tecnologico-section::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    top: -50px;
+    right: 0;
+    z-index: 0;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+@media (max-width: 768px) {
+    .tecnologico-section {
+        padding: 3rem 0;
+    }
+
+    .tecnologico-container {
+        padding: 0 1rem;
+    }
+
+    /* Mobile adjustments for Overlay Button */
+    .btn-overlay-video {
+        font-size: 0.75rem;
+        /* Reduced from 0.9rem */
+        padding: 0.5rem 1.2rem;
+        /* Reduced from 0.6rem 1.4rem */
+        bottom: 35%;
+        /* Slight adjustment if needed, or keep 42% if preferred. Let's try to keep it close but scaled. */
+        width: 100px;
+        /* <--- AJUSTA ESTE VALOR PARA EL ANCHO EN MÓVILES (px o %) */
+        /* To maintain "equivalent" visual weight */
+        left: 22%;
+        /* Often on mobile, a side position (11%) might be too squeezed. Centering is safer. */
+        transform: translateX(-50%);
+        animation-name: float-mobile;
+    }
+
+    /* Animation adjustment for mobile (reduced motion distance) */
+    @keyframes float-mobile {
+        0% {
+            transform: translate(-50%, 0);
+        }
+
+        50% {
+            transform: translate(-50%, -5px);
+        }
+
+        100% {
+            transform: translate(-50%, 0);
+        }
+    }
+}

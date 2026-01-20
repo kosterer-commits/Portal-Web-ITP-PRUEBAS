@@ -1,0 +1,131 @@
+/* Sidebar Menu - Glassmophic & Single Tab */
+.sidebar-container {
+  position: fixed;
+  left: 0;
+  top: 20%;
+  /* Moved up slightly */
+  z-index: 1000;
+  font-family: var(--font-family-sans, sans-serif);
+}
+
+/* The vertical tab trigger */
+.sidebar-trigger {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: none;
+  /* Connected to edge */
+  color: var(--primary-dark, #1e3c72);
+  padding: 20px 10px;
+  border-radius: 0 15px 15px 0;
+  cursor: pointer;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 60px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sidebar-trigger:hover,
+.sidebar-container.active .sidebar-trigger {
+  background: rgba(255, 255, 255, 0.85);
+  width: 320px;
+  height: auto;
+  min-height: 400px;
+  align-items: flex-start;
+}
+
+/* Vertical Text Label */
+.trigger-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-container.active .trigger-label,
+.sidebar-trigger:hover .trigger-label {
+  opacity: 0;
+  display: none;
+  writing-mode: horizontal-tb;
+  transform: none;
+}
+
+/* Menu Content (Hidden initially) */
+.sidebar-content {
+  opacity: 0;
+  visibility: hidden;
+  width: 0;
+  transition: opacity 0.3s 0.1s, visibility 0s 0.4s;
+  /* delayed fade in */
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar-container.active .sidebar-content,
+.sidebar-trigger:hover .sidebar-content {
+  opacity: 1;
+  visibility: visible;
+  width: 100%;
+  transition: opacity 0.3s 0.2s;
+}
+
+/* Header inside the expanded menu */
+.menu-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--primary-main);
+}
+
+/* Link Items */
+.sidebar-link-item {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--gray-900, #333);
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.sidebar-link-item:hover {
+  background: rgba(30, 60, 114, 0.1);
+}
+
+.link-icon-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-right: 15px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.link-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.link-desc {
+  font-size: 0.75rem;
+  color: var(--gray-600, #666);
+}

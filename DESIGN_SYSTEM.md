@@ -15,7 +15,7 @@ Paleta de colores, tipografía y espaciado coherente que mantiene unidad visual 
 ### Colores Secundarios
 - **Cyan**: `#00d4ff` - Azul neón (Acentos, efectos)
 - **Cyan Dark**: `#0099ff` - Azul neón oscuro (Hover)
-- **Teal**: `#00a8cc` - Verde azulado (Alternativo)
+- **Cyan Alt**: `#00a8cc` - Azul Intenso (Alternativo)
 
 ### Colores Neutros
 - **Gray 50-950**: Escala completa para texto, fondos y bordes
@@ -24,7 +24,7 @@ Paleta de colores, tipografía y espaciado coherente que mantiene unidad visual 
 - **Gray 50**: `#f8f9fa` - Fondos claros
 
 ### Colores de Acento
-- **Success**: `#28a745` - Verde (Confirmaciones)
+- **Success**: `#00d4ff` - Cyan (Confirmaciones)
 - **Warning**: `#ffc107` - Amarillo (Advertencias)
 - **Error**: `#dc3545` - Rojo (Errores)
 - **Info**: `#17a2b8` - Azul claro (Información)

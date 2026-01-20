@@ -31,7 +31,7 @@
     --gray-950: #1a1a1a;
 
     /* Colores de Acento */
-    --accent-success: #10b981;
+    --accent-success: #00d4ff;
     --accent-warning: #f59e0b;
     --accent-error: #ef4444;
     --accent-info: #06b6d4;
@@ -440,45 +440,131 @@ section.dark p {
     ============================================ */
 
 /* Espaciado - Margin */
-.mt-1 { margin-top: var(--space-sm); }
-.mt-2 { margin-top: var(--space-md); }
-.mt-3 { margin-top: var(--space-lg); }
-.mt-4 { margin-top: var(--space-xl); }
-.mt-5 { margin-top: var(--space-2xl); }
+.mt-1 {
+    margin-top: var(--space-sm);
+}
 
-.mb-1 { margin-bottom: var(--space-sm); }
-.mb-2 { margin-bottom: var(--space-md); }
-.mb-3 { margin-bottom: var(--space-lg); }
-.mb-4 { margin-bottom: var(--space-xl); }
-.mb-5 { margin-bottom: var(--space-2xl); }
+.mt-2 {
+    margin-top: var(--space-md);
+}
 
-.mx-auto { margin-left: auto; margin-right: auto; }
+.mt-3 {
+    margin-top: var(--space-lg);
+}
+
+.mt-4 {
+    margin-top: var(--space-xl);
+}
+
+.mt-5 {
+    margin-top: var(--space-2xl);
+}
+
+.mb-1 {
+    margin-bottom: var(--space-sm);
+}
+
+.mb-2 {
+    margin-bottom: var(--space-md);
+}
+
+.mb-3 {
+    margin-bottom: var(--space-lg);
+}
+
+.mb-4 {
+    margin-bottom: var(--space-xl);
+}
+
+.mb-5 {
+    margin-bottom: var(--space-2xl);
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 /* Espaciado - Padding */
-.px-1 { padding-left: var(--space-sm); padding-right: var(--space-sm); }
-.px-2 { padding-left: var(--space-md); padding-right: var(--space-md); }
-.px-3 { padding-left: var(--space-lg); padding-right: var(--space-lg); }
+.px-1 {
+    padding-left: var(--space-sm);
+    padding-right: var(--space-sm);
+}
 
-.py-1 { padding-top: var(--space-sm); padding-bottom: var(--space-sm); }
-.py-2 { padding-top: var(--space-md); padding-bottom: var(--space-md); }
-.py-3 { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }
+.px-2 {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+}
+
+.px-3 {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+}
+
+.py-1 {
+    padding-top: var(--space-sm);
+    padding-bottom: var(--space-sm);
+}
+
+.py-2 {
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+}
+
+.py-3 {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+}
 
 /* Alineación de texto */
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-.text-justify { text-align: justify; }
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-justify {
+    text-align: justify;
+}
 
 /* Colores de texto */
-.text-primary { color: var(--text-primary); }
-.text-secondary { color: var(--text-secondary); }
-.text-light { color: var(--text-light); }
-.text-white { color: var(--text-white); }
+.text-primary {
+    color: var(--text-primary);
+}
 
-.text-muted { color: var(--gray-600); }
-.text-success { color: var(--accent-success); }
-.text-warning { color: var(--accent-warning); }
-.text-error { color: var(--accent-error); }
+.text-secondary {
+    color: var(--text-secondary);
+}
+
+.text-light {
+    color: var(--text-light);
+}
+
+.text-white {
+    color: var(--text-white);
+}
+
+.text-muted {
+    color: var(--gray-600);
+}
+
+.text-success {
+    color: var(--accent-success);
+}
+
+.text-warning {
+    color: var(--accent-warning);
+}
+
+.text-error {
+    color: var(--accent-error);
+}
 
 /* Textos para zonas CLARAS (fondo claro) */
 .light-zone {
@@ -550,36 +636,105 @@ section.dark p {
 }
 
 /* Pesos de texto */
-.font-light { font-weight: var(--font-weight-light); }
-.font-normal { font-weight: var(--font-weight-normal); }
-.font-semibold { font-weight: var(--font-weight-semibold); }
-.font-bold { font-weight: var(--font-weight-bold); }
-.font-extrabold { font-weight: var(--font-weight-extrabold); }
+.font-light {
+    font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+    font-weight: var(--font-weight-normal);
+}
+
+.font-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.font-extrabold {
+    font-weight: var(--font-weight-extrabold);
+}
 
 /* Display */
-.flex { display: flex; }
-.flex-col { flex-direction: column; }
-.flex-center { display: flex; align-items: center; justify-content: center; }
-.grid { display: grid; }
-.hidden { display: none !important; }
-.block { display: block; }
-.inline-block { display: inline-block; }
+.flex {
+    display: flex;
+}
 
-.flex-wrap { flex-wrap: wrap; }
-.justify-between { justify-content: space-between; }
-.justify-center { justify-content: center; }
-.align-center { align-items: center; }
-.gap-1 { gap: var(--space-sm); }
-.gap-2 { gap: var(--space-md); }
-.gap-3 { gap: var(--space-lg); }
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-1 {
+    gap: var(--space-sm);
+}
+
+.gap-2 {
+    gap: var(--space-md);
+}
+
+.gap-3 {
+    gap: var(--space-lg);
+}
 
 /* Efectos */
-.rounded { border-radius: var(--radius-md); }
-.rounded-lg { border-radius: var(--radius-lg); }
-.rounded-full { border-radius: var(--radius-full); }
+.rounded {
+    border-radius: var(--radius-md);
+}
 
-.shadow { box-shadow: var(--shadow-md); }
-.shadow-lg { box-shadow: var(--shadow-lg); }
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+.shadow {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
 
 /* ============================================
       EFECTO RETRO PARA TÍTULOS
@@ -609,17 +764,18 @@ section.dark p {
     text-align: center;
 }
 
-.retro-subtitle:before, .retro-subtitle:after {
+.retro-subtitle:before,
+.retro-subtitle:after {
     content: " ";
     position: absolute;
     width: 100px;
     height: 4px;
     border-top: 2px solid white;
-    border-bottom: 2px solid  white;
+    border-bottom: 2px solid white;
 }
 
 .retro-subtitle:before {
-    margin: 12px 0 0 -110px;    
+    margin: 12px 0 0 -110px;
 }
 
 .retro-subtitle:after {
@@ -652,11 +808,11 @@ section.dark p {
     .container {
         padding: 0 var(--space-lg);
     }
-    
+
     h1 {
         font-size: var(--font-3xl);
     }
-    
+
     h2 {
         font-size: var(--font-2xl);
     }
@@ -667,41 +823,41 @@ section.dark p {
         --space-5xl: 3rem;
         --space-4xl: 2.5rem;
     }
-    
+
     h1 {
         font-size: var(--font-2xl);
     }
-    
+
     h2 {
         font-size: var(--font-xl);
     }
-    
+
     h3 {
         font-size: var(--font-lg);
     }
-    
+
     .section-title {
         font-size: var(--font-2xl);
     }
-    
+
     .section-subtitle {
         font-size: var(--font-base);
     }
-    
+
     section {
         padding: var(--space-3xl) 0;
     }
-    
+
     .container {
         padding: 0 var(--space-md);
     }
-    
+
     .grid-2,
     .grid-3,
     .grid-4 {
         grid-template-columns: 1fr;
     }
-    
+
     .btn {
         width: 100%;
         padding: 0.8rem 1.5rem;
@@ -716,36 +872,36 @@ section.dark p {
         --font-3xl: 1.5rem;
         --font-2xl: 1.25rem;
     }
-    
+
     h1 {
         font-size: var(--font-xl);
         margin-bottom: var(--space-md);
     }
-    
+
     h2 {
         font-size: var(--font-lg);
     }
-    
+
     p {
         font-size: var(--font-sm);
     }
-    
+
     .section-title {
         font-size: var(--font-xl);
     }
-    
+
     section {
         padding: var(--space-2xl) 0;
     }
-    
+
     .container {
         padding: 0 var(--space-sm);
     }
-    
+
     .card {
         padding: var(--space-lg);
     }
-    
+
     .btn {
         padding: 0.7rem 1.2rem;
         font-size: var(--font-sm);
@@ -791,6 +947,152 @@ section.dark p {
     overflow: hidden;
     background:
         linear-gradient(to bottom, rgba(0, 0, 0, 0.205), rgba(0, 0, 0, 0.322)),
-        url('../imagenes/background-avatar.jpg') center/cover no-repeat fixed;
+        url('../imagenes/ITP_wallpaper.jpg') center/cover no-repeat fixed;
     pointer-events: none;
+}
+
+/* =========================================
+   SISTEMA DE TÍTULOS: ESTILO "PASTILLERO"
+   Fondo blanco encapsulado para máxima legibilidad
+   ========================================= */
+
+.itp-header-block {
+    position: relative;
+    margin: 0 auto 3.5rem auto;
+    /* Centrado horizontal */
+
+    /* EL EFECTO PASTILLERO */
+    background-color: rgba(255, 255, 255, 0.95);
+    /* Blanco con 95% opacidad */
+    backdrop-filter: blur(10px);
+    /* Efecto cristal sutil */
+    padding: 2.5rem 3rem;
+    /* Espacio interno generoso */
+    border-radius: 30px;
+    /* Bordes redondeados suaves */
+
+    /* Ajuste de tamaño */
+    width: fit-content;
+    /* El ancho se ajusta al contenido */
+    max-width: 90%;
+    /* Para que no pegue en bordes de móvil */
+
+    /* Profundidad */
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.15),
+        /* Sombra difusa */
+        0 1px 3px rgba(0, 0, 0, 0.1);
+    /* Borde sutil */
+
+    /* Animación */
+    animation: fadeUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    z-index: 2;
+}
+
+.itp-header-block.text-center {
+    text-align: center;
+}
+
+/* 1. Tag Line: Cyan Oscuro para contraste sobre blanco */
+.itp-tag-line {
+    display: inline-block;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #0081a7;
+    /* Cyan más oscuro y legible */
+    margin-bottom: 0.8rem;
+}
+
+/* 2. Título Principal: AZUL TEC OSCURO */
+.itp-title-modern {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin: 0;
+    color: #1b396a;
+    /* Azul Institucional Oscuro */
+    letter-spacing: -1px;
+    /* Ya no necesitamos sombra de texto porque el fondo es blanco */
+    text-shadow: none;
+}
+
+/* Highlight: Gradiente Azul a Cyan */
+.itp-title-modern .highlight {
+    background: linear-gradient(90deg, #1b396a 0%, #00d4ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: none;
+    /* Quitamos el filtro de brillo anterior */
+}
+
+/* 3. Separador */
+.itp-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 1.2rem auto;
+    opacity: 1;
+}
+
+.itp-separator .line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #1b396a, #00d4ff);
+    border-radius: 4px;
+}
+
+.itp-separator .dot {
+    width: 6px;
+    height: 6px;
+    background-color: #1b396a;
+    border-radius: 50%;
+}
+
+/* 4. Subtítulo: Gris oscuro */
+.itp-subtitle-modern {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #4b5563;
+    /* Gris formal */
+    font-weight: 400;
+    max-width: 650px;
+    margin: 0 auto;
+    text-shadow: none;
+}
+
+/* Animación */
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .itp-header-block {
+        padding: 2rem 1.5rem;
+        /* Menos padding en móvil */
+        width: 95%;
+        /* Más ancho en móvil */
+        border-radius: 20px;
+    }
+
+    .itp-title-modern {
+        font-size: 2.2rem;
+    }
+
+    .itp-subtitle-modern {
+        font-size: 1rem;
+    }
 }
